@@ -8,6 +8,7 @@
   background-color: var(--dark-white);
   font-size: 16px;
   font-family: Arial, Helvetica, sans-serif;
+  height: 100vh;
 }
 
 .header {

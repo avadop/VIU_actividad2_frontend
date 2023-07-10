@@ -7,4 +7,27 @@ body {
   margin: 1rem 3rem;
   background-color: white;
   border-radius: 3px;
+  min-height: 75vh;
+  max-width: 85vw;
+  padding: 1rem 3rem;
+  margin-left: auto;
+  margin-right: auto;
+  box-sizing: border-box;
+}
+
+/* Colores clases botones */
+
+.btn-orange {
+  background-color: var(--orange);
+  color: var(--dark-white);
+  border: 2px solid var(--orange);
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.btn-orange-contrast {
+  background-color: var(--dark-white);
+  border: 2px solid var(--orange);
+  font-weight: 600;
+  font-size: 18px;
 }
