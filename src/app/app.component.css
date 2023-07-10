@@ -1,0 +1,44 @@
+.viupets {
+  --dark-blue: #07689F;
+  --light-blue: #A2D5F2;
+  --orange: #FF7E67;
+  --text-color: #2A2A2A;
+  --dark-white: #FAFAFA;
+  color: var(--text-color);
+  background-color: var(--dark-white);
+  font-size: 16px;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.header {
+  background-color: var(--dark-blue);
+  width: 100vw;
+  font-size: 3rem;
+  padding: 1rem 1.5rem;
+  box-sizing: border-box;
+}
+
+.header-logo {
+  height: 7rem;
+  margin-right: 2rem;
+}
+
+.header-link {
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  color: white;
+
+}
+
+.footer {
+  position: fixed;
+  bottom: 0;
+  padding: 1rem 1.5rem;
+  width: 100vw;
+  font-size: 1.15rem;
+  background-color: var(--light-blue);
+  display: flex;
+  justify-content: space-between;
+  box-sizing: border-box;
+}
