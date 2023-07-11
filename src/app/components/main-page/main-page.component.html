@@ -1,14 +1,42 @@
 <div class="white-container">
   <h1>¡Bienvenido!</h1>
-  <p>En VIUpets damos el mejor servicio de cuidado de mascotas. Con nuestra nueva aplicación podrás pedir cita de manera rápida y eficiente o modificar las citas ya pedidas. 
+  <p class="main-page__text">En VIUpets damos el mejor servicio de cuidado de mascotas. Con nuestra nueva aplicación podrás pedir cita de manera rápida y eficiente o modificar las citas ya pedidas. 
     <span>{{infoText}}</span>
   </p>
-  <div *ngIf="userLogged; else loggedOut">
-    <button type="button" class="btn btn-orange">Pedir nueva cita</button>
-    <button type="button" class="btn btn-orange-contrast">Consultar citas pedidas</button>
+  <div class="main-page__button-container">
+    <ng-container *ngIf="userLogged; else loggedOut">
+      <button type="button" class="btn btn-orange main-page__button--margin-right main-page__button--logged-in">Pedir nueva cita</button>
+      <button type="button" class="btn btn-orange-contrast main-page__button--logged-in main-page__button--margin-left">Consultar citas pedidas</button>
+    </ng-container>
+    <ng-template #loggedOut>
+      <button type="button" class="btn btn-orange main-page__button--logged-out main-page__button--margin-right">Iniciar sesión</button>
+      <button type="button" class="btn main-page__button--logged-out btn-orange-contrast main-page__button--margin-left">Registrarse</button>
+    </ng-template>
   </div>
-  <ng-template #loggedOut>
-    <button type="button" class="btn btn-orange">Iniciar sesión</button>
-    <button type="button" class="btn btn-orange-contrast">Registrarse</button>
-  </ng-template>
+
+  <!-- Carrusel bootstrap -->
+
+  <div id="carouselExampleIndicators" class="carousel slide main-page__carrusel" data-bs-ride="carousel">
+    <div class="carousel-indicators">
+      <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+      <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+      <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+    </div>
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <img src="assets\images\panel1-carrusel.svg" class="d-block w-100" alt="...">
+      </div>
+      <div class="carousel-item">
+        <img src="assets\images\panel2-carrusel.jpg" class="d-block w-100" alt="...">
+      </div>
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+  </div>
 </div>

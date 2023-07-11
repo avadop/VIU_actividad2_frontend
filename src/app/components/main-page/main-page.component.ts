@@ -14,7 +14,7 @@ export class MainPageComponent {
 
 
   constructor() {
-    this.userLogged = false;
+    this.userLogged = true;
     this.infoText = this.userLogged ? infoTextLoggedIn : infoTextLoggedOut;
   }
 }
