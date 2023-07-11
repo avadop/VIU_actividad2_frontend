@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { ActivatedRoute, Params } from '@angular/router';
+
 
 const infoTextLoggedOut:string = "Para ello es necesario que te registres o, si ya estás registrado, inicies sesión.";
 const infoTextLoggedIn:string = "¡Ya estás listo para comenzar!";
@@ -10,11 +12,22 @@ const infoTextLoggedIn:string = "¡Ya estás listo para comenzar!";
 export class MainPageComponent {
   public infoText: String;
 
-  public userLogged: Boolean;
+  public userLogged : boolean;
+
+  public userId : string;
 
 
-  constructor() {
-    this.userLogged = true;
-    this.infoText = this.userLogged ? infoTextLoggedIn : infoTextLoggedOut;
+  constructor(private route: ActivatedRoute) {
+    this.userId = '';
+    this.userLogged = false;
+    this.infoText = infoTextLoggedOut;
+  }
+
+  ngOnInit(): void {
+    this.route.params.subscribe((params: Params) => {
+      this.userId = params["id"];
+      this.userLogged = !!this.userId;
+      this.infoText = this.userLogged ? infoTextLoggedIn : infoTextLoggedOut;
+    });
   }
 }

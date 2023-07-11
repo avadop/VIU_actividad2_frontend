@@ -1,9 +1,10 @@
 <main class="viupets">
-    <header class="header">
-      <a class="header-link" [routerLink]="['']">
-        <img class="header-logo" src="assets/images/logo.svg">
-        <span>VIUPets</span>
-      </a>
+  <header class="header">
+    <a class="header-link" [routerLink]="userId ? ['/main-page/', userId] : ['']">
+      <img class="header-logo" src="assets/images/logo.svg">
+      <span>VIUPets</span>
+    </a>
+    <p *ngIf="userId">Iniciar sesion</p>
   </header>
   <router-outlet></router-outlet>
   <footer class="footer">

@@ -5,7 +5,7 @@ import { MainPageComponent } from "./components/main-page/main-page.component";
 
 const appRoutes: Routes = [
   {path: '', component: MainPageComponent},
-  {path: 'main-page', component: MainPageComponent},
+  {path: 'main-page/:id', component: MainPageComponent},
 ];
 
 export const routing: ModuleWithProviders<Object> = RouterModule.forRoot(appRoutes);
