@@ -9,8 +9,8 @@
       <button type="button" class="btn btn-orange-contrast main-page__button--logged-in main-page__button--margin-left">Consultar citas pedidas</button>
     </ng-container>
     <ng-template #loggedOut>
-      <button type="button" class="btn btn-orange main-page__button--logged-out main-page__button--margin-right">Iniciar sesión</button>
-      <button type="button" class="btn main-page__button--logged-out btn-orange-contrast main-page__button--margin-left">Registrarse</button>
+      <button type="button" class="btn btn-orange main-page__button--logged-out main-page__button--margin-right" (click)="redirectOnClick('/inicio-sesion')">Iniciar sesión</button>
+      <button type="button" class="btn main-page__button--logged-out btn-orange-contrast main-page__button--margin-left" (click)="redirectOnClick('/registro-usuario')">Registrarse</button>
     </ng-template>
   </div>
 

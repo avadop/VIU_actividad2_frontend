@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { ActivatedRoute, Params } from '@angular/router';
+import { ActivatedRoute, Params, Router } from '@angular/router';
 
 
 const infoTextLoggedOut:string = "Para ello es necesario que te registres o, si ya estás registrado, inicies sesión.";
@@ -17,7 +17,7 @@ export class MainPageComponent {
   public userId : string;
 
 
-  constructor(private route: ActivatedRoute) {
+  constructor(private route: ActivatedRoute, private router: Router) {
     this.userId = '';
     this.userLogged = false;
     this.infoText = infoTextLoggedOut;
@@ -29,5 +29,9 @@ export class MainPageComponent {
       this.userLogged = !!this.userId;
       this.infoText = this.userLogged ? infoTextLoggedIn : infoTextLoggedOut;
     });
+  }
+
+  redirectOnClick(route: string): void {
+    this.router.navigate([route]);
   }
 }
