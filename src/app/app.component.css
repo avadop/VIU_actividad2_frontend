@@ -30,6 +30,24 @@
   margin-right: 2rem;
 }
 
+.header-user {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: var(--dark-white);
+  font-size: 20px;
+  margin:auto 0;
+}
+
+.header-user:hover {
+  cursor: pointer;
+}
+
+.header-user > img {
+  width: 60px;
+  margin-bottom: 0.75rem;
+}
+
 .header-link {
   text-decoration: none;
   display: flex;
@@ -47,4 +65,15 @@
   box-sizing: border-box;
   display: flex;
   justify-content: space-between;
+}
+
+.dropdown-item-container{
+  display:flex;
+  align-items: center;
+  padding: 0.25rem 1rem;
+}
+
+.dropdown-menu > li > img{
+  width: 20px;
+  height: 20px;
 }

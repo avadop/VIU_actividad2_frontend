@@ -13,8 +13,8 @@ export class AppComponent {
 
   constructor() {
     this.userName = 'Fulanito Fernández';
-    // this.userId = '123412341C'; //null o vacio si no hay nadie loggeado
-    this.userId = '';
+    this.userId = '123412341C'; //null o vacio si no hay nadie loggeado
+    // this.userId = '';
   }
 
 }
