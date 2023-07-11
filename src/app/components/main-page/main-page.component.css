@@ -30,5 +30,16 @@
   border-radius: 3px;
   margin: 2rem auto 0 auto;
   width: 93%;
+}
 
+.main-page__arrows-btn {
+  border: 2px solid black;
+  border-radius: 50%;
+  height: 3rem;
+  width: 3rem;
+  margin: auto 1rem auto 1rem;
+}
+
+.main-page__carrusel--arrow-color {
+  color:black;
 }
