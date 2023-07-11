@@ -1,25 +1,5 @@
 <main class="viupets">
-  <header class="header">
-    <a class="header-link" [routerLink]="userId ? ['/main-page/', userId] : ['']">
-      <img class="header-logo" src="assets/images/logo.svg">
-      <span>VIUPets</span>
-    </a>
-    <div *ngIf="userId" class="header-user dropdown" id="dropdownMenu2" data-bs-toggle="dropdown">
-      <img src="assets/images/user-logo.svg">
-      <span>{{userName}}</span>
-    </div>
-    <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
-      <li class="dropdown-item-container"><img src="assets/images/menu-icons/user.svg"><a class="dropdown-item" href="#">Ver perfil</a></li>
-      <li><hr class="dropdown-divider"></li>
-      <li class="dropdown-item-container"><img src="assets/images/menu-icons/mascotas.svg" ><a class="dropdown-item" href="#">Mascotas</a></li>
-      <li><hr class="dropdown-divider"></li>
-      <li class="dropdown-item-container"><img src="assets/images/menu-icons/citas.svg"><a class="dropdown-item" href="#">Citas</a></li>
-      <li><hr class="dropdown-divider"></li>
-      <li class="dropdown-item-container"><img src="assets/images/menu-icons/tienda.svg"><a class="dropdown-item" href="#">Visitar tienda</a></li>
-      <li><hr class="dropdown-divider"></li>
-      <li class="dropdown-item-container"><img src="assets/images/menu-icons/log-out.svg"><a class="dropdown-item" href="#">Cerrar sesión</a></li>
-    </ul>
-  </header>
+  <app-header [userId]="userId" [userName]="userName"></app-header>
   <router-outlet></router-outlet>
   <footer class="footer">
     <span><strong>Autores: </strong></span>

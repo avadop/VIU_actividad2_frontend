@@ -6,13 +6,15 @@ import { AppComponent } from './app.component';
 import { MainPageComponent } from './components/main-page/main-page.component';
 import { RegistroUsuarioComponent } from './components/registro-usuario/registro-usuario.component';
 import { InicioSesionComponent } from './components/inicio-sesion/inicio-sesion.component';
+import { HeaderComponent } from './components/header/header.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     MainPageComponent,
     RegistroUsuarioComponent,
-    InicioSesionComponent
+    InicioSesionComponent,
+    HeaderComponent
   ],
   imports: [
     BrowserModule,
