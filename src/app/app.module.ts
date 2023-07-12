@@ -10,6 +10,7 @@ import { RegistroUsuarioComponent } from './components/registro-usuario/registro
 import { InicioSesionComponent } from './components/inicio-sesion/inicio-sesion.component';
 import { HeaderComponent } from './components/header/header.component';
 import { CitasDisponiblesComponent } from './components/citas-disponibles/citas-disponibles.component';
+import { ErrorComponent } from './components/error/error.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { CitasDisponiblesComponent } from './components/citas-disponibles/citas-
     RegistroUsuarioComponent,
     InicioSesionComponent,
     HeaderComponent,
-    CitasDisponiblesComponent
+    CitasDisponiblesComponent,
+    ErrorComponent
   ],
   imports: [
     BrowserModule,

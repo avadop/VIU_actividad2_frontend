@@ -5,6 +5,7 @@ import { MainPageComponent } from "./components/main-page/main-page.component";
 import { InicioSesionComponent } from "./components/inicio-sesion/inicio-sesion.component";
 import { CitasDisponiblesComponent } from "./components/citas-disponibles/citas-disponibles.component";
 import { RegistroUsuarioComponent } from "./components/registro-usuario/registro-usuario.component";
+import { ErrorComponent } from "./components/error/error.component";
 
 const appRoutes: Routes = [
   {path: '', component: MainPageComponent},
@@ -12,6 +13,7 @@ const appRoutes: Routes = [
   {path: 'inicio-sesion', component: InicioSesionComponent},
   {path: 'registro-usuario', component: RegistroUsuarioComponent},
   {path: 'citas-disponibles', component: CitasDisponiblesComponent},
+  {path: '**', component: ErrorComponent}
 ];
 
 export const routing: ModuleWithProviders<Object> = RouterModule.forRoot(appRoutes);
