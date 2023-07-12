@@ -9,6 +9,7 @@
         <div class="mb-3">
             <label for="password" class="form-label">Contraseña</label>
             <input type="text" class="form-control" name="password" [(ngModel)]="formInicioSesion.password">
+            <p class="error-message" *ngIf="errorMessage">{{errorMessage}}</p>
         </div>
         <button type="submit" class="btn btn-orange">Iniciar sesión</button>
     </form>

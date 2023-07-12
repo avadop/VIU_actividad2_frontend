@@ -14,12 +14,15 @@ export class InicioSesionComponent {
 
   public errorMessage:string;
 
+  public errorType:number;
+
   constructor(private clientService: ClienteService, private loggedUserService: LoggedUserService) {
     this.formInicioSesion = {
       dni: '',
       password: ''
     };
     this.errorMessage = '';
+    this.errorType = 0;
   }
 
   onSubmit() :void {
@@ -30,6 +33,7 @@ export class InicioSesionComponent {
       error: error => {
         console.log("Ha habido un error", error);
         this.errorMessage = error.message;
+        this.errorType = error.type;
       }
     });
   }

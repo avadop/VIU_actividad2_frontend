@@ -11,3 +11,9 @@
     margin: 3rem auto 0;
     font-size: 24px;
 }
+
+.error-message {
+    font-size: 18px;
+    color:#AB0202;
+    margin-top:4px;
+}
