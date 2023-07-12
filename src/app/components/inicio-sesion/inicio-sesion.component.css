@@ -1,0 +1,13 @@
+.inicio-sesion {
+    text-align: center;
+}
+
+.inicio-sesion > form {
+    margin: 0 auto;
+}
+.inicio-sesion > form > div  {
+    max-width: 23rem;
+    text-align: left;
+    margin: 3rem auto 0;
+    font-size: 24px;
+}

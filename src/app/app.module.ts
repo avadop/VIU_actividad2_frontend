@@ -11,6 +11,7 @@ import { InicioSesionComponent } from './components/inicio-sesion/inicio-sesion.
 import { HeaderComponent } from './components/header/header.component';
 import { CitasDisponiblesComponent } from './components/citas-disponibles/citas-disponibles.component';
 import { ErrorComponent } from './components/error/error.component';
+import { LoggedUserService } from './services/loggedUser.service';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,7 @@ import { ErrorComponent } from './components/error/error.component';
     HttpClientModule,
     FormsModule
   ],
-  providers: [],
+  providers: [LoggedUserService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

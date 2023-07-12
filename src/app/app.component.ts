@@ -16,5 +16,4 @@ export class AppComponent {
     this.userId = '123412341C'; //null o vacio si no hay nadie loggeado
     // this.userId = '';
   }
-
 }
