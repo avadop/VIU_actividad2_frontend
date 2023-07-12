@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Output} from '@angular/core';
+import { Router } from '@angular/router';
 import { ClienteService } from 'src/app/services/cliente.service copy';
 import { LoggedUserService } from 'src/app/services/loggedUser.service';
 
@@ -16,7 +17,10 @@ export class InicioSesionComponent {
 
   public errorType:number;
 
-  constructor(private clientService: ClienteService, private loggedUserService: LoggedUserService) {
+  constructor(private router: Router,
+    private clientService: ClienteService, 
+    private loggedUserService: LoggedUserService
+    ) {
     this.formInicioSesion = {
       dni: '',
       password: ''
@@ -25,10 +29,17 @@ export class InicioSesionComponent {
     this.errorType = 0;
   }
 
+  ngOnInit() {
+    if(this.loggedUserService.getUserId()) {
+      this.router.navigate(['/main-page'])
+    }
+  }
+
   onSubmit() :void {
     this.clientService.clienteLogIn(this.formInicioSesion.dni, this.formInicioSesion.password).subscribe({
       next: (infoLogIn:any) => {
         this.loggedUserService.setUserId(infoLogIn.data);
+        window.location.reload();
       },
       error: error => {
         console.log("Ha habido un error", error);

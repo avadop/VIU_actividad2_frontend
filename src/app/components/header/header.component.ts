@@ -7,11 +7,14 @@ import { LoggedUserService } from 'src/app/services/loggedUser.service';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent {
-  @Input() userId: string = '';
+  public userId: string | null;
 
-  @Input() userName: string = '';
+  public userName: string;
 
-  constructor(private loggedUserService: LoggedUserService) {}
+  constructor(private loggedUserService: LoggedUserService) {
+    this.userId = this.loggedUserService.getUserId();
+    this.userName = 'Fulanito gonzalez';
+  }
 
   logOut() :void {
     this.loggedUserService.removeUserId();
