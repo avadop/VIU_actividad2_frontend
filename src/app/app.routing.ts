@@ -3,6 +3,7 @@ import { Routes, RouterModule } from "@angular/router";
 
 import { MainPageComponent } from "./components/main-page/main-page.component";
 import { InicioSesionComponent } from "./components/inicio-sesion/inicio-sesion.component";
+import { CitasDisponiblesComponent } from "./components/citas-disponibles/citas-disponibles.component";
 import { RegistroUsuarioComponent } from "./components/registro-usuario/registro-usuario.component";
 
 const appRoutes: Routes = [
@@ -10,6 +11,7 @@ const appRoutes: Routes = [
   {path: 'main-page/:id', component: MainPageComponent},
   {path: 'inicio-sesion', component: InicioSesionComponent},
   {path: 'registro-usuario', component: RegistroUsuarioComponent},
+  {path: 'citas-disponibles', component: CitasDisponiblesComponent},
 ];
 
 export const routing: ModuleWithProviders<Object> = RouterModule.forRoot(appRoutes);
