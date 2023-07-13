@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="24.0" height="24.0" viewBox="404.0 283.08333333333326 24.0 24.0" preserveAspectRatio="none">
+  <g>
+    <defs>
+      <path id="s-Path_117-f81d9" d="M428.0 293.58333333333326 L409.7449998855591 293.58333333333326 L418.1300001144409 285.1983331044514 L416.0 283.08333333333326 L404.0 295.08333333333326 L416.0 307.08333333333326 L418.1149999499321 304.96833338340116 L409.7449998855591 296.58333333333326 L428.0 296.58333333333326 L428.0 293.58333333333326 Z "></path>
+    </defs>
+    <g style="mix-blend-mode:normal">
+      <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#s-Path_117-f81d9" fill="#034971" fill-opacity="1.0"></use>
+    </g>
+  </g>
+</svg>
