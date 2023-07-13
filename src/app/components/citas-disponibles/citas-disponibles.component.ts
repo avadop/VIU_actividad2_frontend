@@ -20,10 +20,13 @@ export class CitasDisponiblesComponent {
 
   public selectedCell: {hour: number , day: number};
 
+  public shownWeek: number;
+
   constructor(private citaService: CitaService, private router:Router) {
     this.citas = [];
     this.days = this.getCurrentWeek();
     this.hours = this.getDefinedHours();
+    this.shownWeek = 0;
     this.selectedCell = {hour: -1, day: -1};
   
     this.tableContent = new Array<Array<EstadoCita>>();
@@ -58,6 +61,49 @@ export class CitasDisponiblesComponent {
       week.push({date: day, enabled: day.getDate() > currentDate.getDate()});
     }
 
+    return week;
+  }
+
+  changeWeek(type: 'previous' | 'next'):void {
+    if(type === 'previous') {
+      this.shownWeek = this.shownWeek - 1;
+  
+      if(this.shownWeek === 0) {
+        this.days = this.getCurrentWeek();
+      }
+      else {
+        let prevWeek = new Date();
+
+        prevWeek.setMonth(this.days[0].date.getMonth());
+        prevWeek.setDate(this.days[0].date.getDate() - 7);
+
+        this.days = this.loadTableWeek(prevWeek);
+
+      }
+    }
+    else {
+      this.shownWeek = this.shownWeek + 1;
+      let nextWeek = new Date();
+
+      nextWeek.setMonth(this.days[0].date.getMonth());
+      nextWeek.setDate(this.days[0].date.getDate() + 7);
+
+      this.days = this.loadTableWeek(nextWeek);
+    }
+
+    this.tableContent = this.fillTableContent(this.citas);
+  }
+
+  loadTableWeek(weekStart: Date) : Array<{enabled: boolean, date: Date}> {
+    let week = new Array<{enabled: boolean, date: Date}>();
+
+    for(let i = 0; i < 5; i++) {
+      let day = new Date();
+      day.setDate(weekStart.getDate() + i);
+      day.setMonth(weekStart.getMonth());
+      week.push({date: day, enabled: true});
+    }
+  
     return week;
   }
 
@@ -117,6 +163,8 @@ export class CitasDisponiblesComponent {
 
   isDateInWeek(date: Date): boolean {
     const currentDate = new Date();
+    currentDate.setDate(currentDate.getDate() + (7*this.shownWeek));
+
     const firstDayOfWeek = new Date(currentDate.setDate(currentDate.getDate() - currentDate.getDay() + 1));
     const lastDayOfWeek = new Date(firstDayOfWeek);
     lastDayOfWeek.setDate(firstDayOfWeek.getDate() + 4);

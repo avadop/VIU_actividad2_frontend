@@ -16,6 +16,13 @@ import { PedirCitaComponent } from './components/pedir-cita/pedir-cita.component
 import { CitasProgramadasComponent } from './components/citas-programadas/citas-programadas.component';
 import { DayNumberPipe } from './pipes/dayNumberPipe';
 
+import { registerLocaleData } from '@angular/common';
+import localeEs from '@angular/common/locales/es';
+import localeEsExtra from '@angular/common/locales/extra/es';
+import { MonthNamePipe } from './pipes/monthNamePipe';
+
+registerLocaleData(localeEs, 'fr-FR', localeEsExtra);
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -27,7 +34,8 @@ import { DayNumberPipe } from './pipes/dayNumberPipe';
     ErrorComponent,
     PedirCitaComponent,
     CitasProgramadasComponent,
-    DayNumberPipe
+    DayNumberPipe,
+    MonthNamePipe
   ],
   imports: [
     BrowserModule,

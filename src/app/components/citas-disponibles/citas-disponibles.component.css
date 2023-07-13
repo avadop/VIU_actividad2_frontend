@@ -13,9 +13,13 @@
    width: 56px;
 }
 
+.selectable {
+    cursor: pointer;
+}
 .celda-ocupada {
  user-select: none;
  background-color: #F35858;
+ cursor: not-allowed;
 }
 
 .celda-libre {
@@ -26,9 +30,6 @@
     background-color: #3bb143;
 }
 
-.selectable {
-    cursor: pointer;
-}
 
 .column-width {
     width: 20%;
@@ -47,14 +48,24 @@
 
 .week-nav-container {
     display: flex;
+    justify-content: space-between;
+    align-items:flex-end;
 }
 
-.week-nav-container > button {
+.week-nav-container > div {
+    display: flex;
+}
+
+.week-nav-container > div > button {
     width: 224px;
     display: flex;
     justify-content: space-around;
 }
 
-.week-nav-container > button:first-child {
+.week-nav-container > span {
+    font-size: 22px;
+}
+
+.week-nav-container >div > button:first-child {
     margin-right: 1.5rem;
 }

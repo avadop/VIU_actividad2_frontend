@@ -6,8 +6,11 @@
     </div>
   </header>
   <div class="mt-5 week-nav-container">
-    <button class="btn btn-blue"><img src="/assets/images/arrow-icons/left-arrow.svg">Semana anterior</button>  
-    <button class="btn btn-blue">Siguiente semana <img src="/assets/images/arrow-icons/right-arrow.svg"></button>  
+    <div >
+      <button class="btn btn-blue" [disabled]="shownWeek === 0" (click)="changeWeek('previous')"><img src="/assets/images/arrow-icons/left-arrow.svg">Semana anterior</button>  
+      <button class="btn btn-blue" (click)="changeWeek('next')">Siguiente semana <img src="/assets/images/arrow-icons/right-arrow.svg"></button>  
+    </div>
+    <span>{{days[0].date | monthNamePipe | titlecase}}</span>
   </div>
   <table class="table table-bordered mt-3">
     <thead>
@@ -20,10 +23,10 @@
       <tr *ngFor="let hour of hours.slice(0,7); let hourIdx = index">
         <th scope="row" class="time-row"><span>{{hour.start | date: 'HH:mm'}}</span><span>{{hour.end | date: 'HH:mm'}}</span></th>
         <td *ngFor="let state of tableContent[hourIdx]; let dayIdx = index" [ngClass]="{
+          'selectable' : days[dayIdx].enabled && state !== 0,
           'celda-ocupada': state === 0,
           'celda-libre': state === 1,
-          'celda-seleccionada': state === 2,
-          'selectable' : days[dayIdx].enabled
+          'celda-seleccionada': state === 2
         }" (click)="changeCellState(hourIdx, dayIdx)"></td>
       </tr>
     </tbody>
