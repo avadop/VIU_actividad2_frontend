@@ -31,21 +31,24 @@ export class InicioSesionComponent {
 
   ngOnInit() {
     if(this.loggedUserService.getUserId()) {
-      this.router.navigate(['/main-page'])
+      this.router.navigate(['/main-page']);
     }
   }
 
   onSubmit() :void {
-    this.clientService.clienteLogIn(this.formInicioSesion.dni, this.formInicioSesion.password).subscribe({
-      next: (infoLogIn:any) => {
-        this.loggedUserService.setUserId(infoLogIn.data);
-        window.location.reload();
-      },
-      error: error => {
-        console.log("Ha habido un error", error);
-        this.errorMessage = error.message;
-        this.errorType = error.type;
-      }
-    });
+    if(this.formInicioSesion.dni && this.formInicioSesion.password) {
+      this.clientService.clienteLogIn(this.formInicioSesion.dni, this.formInicioSesion.password).subscribe({
+        next: (infoLogIn:any) => {
+          if(infoLogIn.statusCode === 200) {
+            this.loggedUserService.setUserId(infoLogIn.data);
+            window.location.reload();
+          }
+          else {
+            this.errorType = infoLogIn.statusCode;
+            this.errorMessage = infoLogIn.message;
+          }
+        }
+      });
+    }
   }
 }
