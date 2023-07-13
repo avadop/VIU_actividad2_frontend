@@ -12,6 +12,8 @@ import { HeaderComponent } from './components/header/header.component';
 import { CitasDisponiblesComponent } from './components/citas-disponibles/citas-disponibles.component';
 import { ErrorComponent } from './components/error/error.component';
 import { LoggedUserService } from './services/loggedUser.service';
+import { PedirCitaComponent } from './components/pedir-cita/pedir-cita.component';
+import { CitasProgramadasComponent } from './components/citas-programadas/citas-programadas.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +23,9 @@ import { LoggedUserService } from './services/loggedUser.service';
     InicioSesionComponent,
     HeaderComponent,
     CitasDisponiblesComponent,
-    ErrorComponent
+    ErrorComponent,
+    PedirCitaComponent,
+    CitasProgramadasComponent
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,21 @@
+import { ComponentFixture, TestBed } from '@angular/core/testing';
+
+import { PedirCitaComponent } from './pedir-cita.component';
+
+describe('PedirCitaComponent', () => {
+  let component: PedirCitaComponent;
+  let fixture: ComponentFixture<PedirCitaComponent>;
+
+  beforeEach(() => {
+    TestBed.configureTestingModule({
+      declarations: [PedirCitaComponent]
+    });
+    fixture = TestBed.createComponent(PedirCitaComponent);
+    component = fixture.componentInstance;
+    fixture.detectChanges();
+  });
+
+  it('should create', () => {
+    expect(component).toBeTruthy();
+  });
+});

@@ -1,5 +1,5 @@
 <header class="header">
-  <a class="header-link" [routerLink]="['/main-page/']">
+  <a class="header-link" [routerLink]="['/main-page']">
     <img class="header-logo" src="assets/images/logo.svg">
     <span>VIUPets</span>
   </a>
@@ -10,27 +10,27 @@
   <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
     <li class="dropdown-item-container">
       <img src="assets/images/menu-icons/user.svg">
-      <a class="dropdown-item" href="#">Ver perfil</a>
+      <span >Ver perfil</span>
     </li>
     <li><hr class="dropdown-divider"></li>
     <li class="dropdown-item-container">
       <img src="assets/images/menu-icons/mascotas.svg" >
-      <a class="dropdown-item" href="#">Mascotas</a>
+      <span >Mascotas</span>
     </li>
     <li><hr class="dropdown-divider"></li>
-    <li class="dropdown-item-container">
+    <li class="dropdown-item-container" (click)="redirectOnClick('/citas-programadas')">
       <img src="assets/images/menu-icons/citas.svg">
-      <a class="dropdown-item" href="#">Citas</a>
+      <span >Citas</span>
     </li>
     <li><hr class="dropdown-divider"></li>
     <li class="dropdown-item-container">
       <img src="assets/images/menu-icons/tienda.svg">
-      <a class="dropdown-item" href="#">Visitar tienda</a>
+      <span >Visitar tienda</span>
     </li>
     <li><hr class="dropdown-divider"></li>
     <li class="dropdown-item-container" (click)="logOut()">
       <img src="assets/images/menu-icons/log-out.svg">
-      <a class="dropdown-item" href="#">Cerrar sesión</a>
+      <span >Cerrar sesión</span>
     </li>
   </ul>
 </header>

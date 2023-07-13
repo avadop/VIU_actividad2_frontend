@@ -44,7 +44,18 @@
   padding: 0.25rem 1rem;
 }
 
-.dropdown-menu > li > img{
+.dropdown-item-container:hover{
+  cursor: pointer;
+  background-color: var(--light-grey);
+}
+
+
+.dropdown-item-container > img{
   width: 20px;
   height: 20px;
+}
+
+
+.dropdown-item-container > span{
+  margin-left: 1rem;
 }

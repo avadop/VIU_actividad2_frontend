@@ -4,6 +4,7 @@
   --orange: #FF7E67;
   --text-color: #2A2A2A;
   --dark-white: #FAFAFA;
+  --light-grey: #e6e2e2;
   color: var(--text-color);
   background-color: var(--dark-white);
   font-size: 18px;
