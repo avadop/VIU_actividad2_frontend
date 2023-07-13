@@ -5,11 +5,11 @@
       <button class="btn btn-orange citas-disponibles-confirm-btn" [disabled]="selectedCell.day < 0 && selectedCell.hour < 0" (click)="confirmCita()">Continuar</button>  
     </div>
   </header>
-  <div>
-    <button class="btn btn-blue">Semana anterior</button>  
-    <button class="btn btn-blue">Siguiente semana</button>  
+  <div class="mt-5 week-nav-container">
+    <button class="btn btn-blue"><img src="/assets/images/arrow-icons/left-arrow.svg">Semana anterior</button>  
+    <button class="btn btn-blue">Siguiente semana <img src="/assets/images/arrow-icons/right-arrow.svg"></button>  
   </div>
-  <table class="table table-bordered mt-5">
+  <table class="table table-bordered mt-3">
     <thead>
       <tr>
         <th scope="col" class="special-cell"></th>

@@ -44,3 +44,17 @@
     justify-content: space-between;
     align-items:flex-end;
 }
+
+.week-nav-container {
+    display: flex;
+}
+
+.week-nav-container > button {
+    width: 224px;
+    display: flex;
+    justify-content: space-around;
+}
+
+.week-nav-container > button:first-child {
+    margin-right: 1.5rem;
+}
