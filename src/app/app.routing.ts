@@ -16,7 +16,7 @@ const appRoutes: Routes = [
   {path: 'registro-usuario', component: RegistroUsuarioComponent},
   {path: 'citas-disponibles', component: CitasDisponiblesComponent},
   {path: 'citas-programadas', component: CitasProgramadasComponent},
-  {path: 'pedir-cita', component: PedirCitaComponent},
+  {path: 'pedir-cita/:dia/:hora', component: PedirCitaComponent},
   {path: '**', component: ErrorComponent}
 ];
 

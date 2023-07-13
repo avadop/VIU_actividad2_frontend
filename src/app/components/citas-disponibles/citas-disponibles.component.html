@@ -1,5 +1,38 @@
 <div class="white-container">
   <h1>Citas disponibles</h1>
-  <p>{{citas | json}}</p>
-  <button class="btn btn-orange" (click)="redirectOnClick('/pedir-cita')">Confirmar</button>
+  <button class="btn btn-orange" [disabled]="selectedCell.day < 0 && selectedCell.hour < 0" (click)="confirmCita()">Continuar</button>
+
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th scope="col" class="special-cell"></th>
+        <th scope="col" class="time-title column-width" *ngFor="let day of days">{{day.date | dayNumberPipe | titlecase}}</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let hour of hours.slice(0,7); let hourIdx = index">
+        <th scope="row" class="time-row"><span>{{hour.start | date: 'HH:mm'}}</span><span>{{hour.end | date: 'HH:mm'}}</span></th>
+        <td *ngFor="let state of tableContent[hourIdx]; let dayIdx = index" [ngClass]="{
+          'celda-ocupada': state === 0,
+          'celda-libre': state === 1,
+          'celda-seleccionada': state === 2,
+          'selectable' : days[dayIdx].enabled
+        }" (click)="changeCellState(hourIdx, dayIdx)"></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <table class="table table-bordered mt-4">
+    <tbody>
+      <tr scope="row" *ngFor="let hour of hours.slice(7,hours.length); let hourIdx = index">
+        <th class="time-row"><span>{{hour.start | date: 'HH:mm'}}</span><span>{{hour.end | date: 'HH:mm'}}</span></th>
+        <td class="column-width" *ngFor="let state of tableContent[hourIdx+7]; let dayIdx = index" [ngClass]="{
+          'celda-ocupada': state === 0,
+          'celda-libre': state === 1,
+          'celda-seleccionada': state === 2,
+          'selectable' : days[dayIdx].enabled
+        }" (click)="changeCellState(hourIdx + 7, dayIdx)"></td>
+      </tr>
+    </tbody>
+  </table>
 </div>

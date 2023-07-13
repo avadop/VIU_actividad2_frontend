@@ -1,0 +1,35 @@
+.time-row {
+    display: flex;
+    flex-direction: column;
+    max-width: 64px;
+    box-sizing: border-box;
+}
+
+.time-title {
+    text-align: center;
+}
+
+.special-cell {
+   width: 56px;
+}
+
+.celda-ocupada {
+ user-select: none;
+ background-color: #F35858;
+}
+
+.celda-libre {
+    background-color: #D9D9D9;
+}
+
+.celda-seleccionada {
+    background-color: #3bb143;
+}
+
+.selectable {
+    cursor: pointer;
+}
+
+.column-width {
+    width: 20%;
+}

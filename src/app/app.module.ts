@@ -14,6 +14,7 @@ import { ErrorComponent } from './components/error/error.component';
 import { LoggedUserService } from './services/loggedUser.service';
 import { PedirCitaComponent } from './components/pedir-cita/pedir-cita.component';
 import { CitasProgramadasComponent } from './components/citas-programadas/citas-programadas.component';
+import { DayNumberPipe } from './pipes/dayNumberPipe';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { CitasProgramadasComponent } from './components/citas-programadas/citas-
     CitasDisponiblesComponent,
     ErrorComponent,
     PedirCitaComponent,
-    CitasProgramadasComponent
+    CitasProgramadasComponent,
+    DayNumberPipe
   ],
   imports: [
     BrowserModule,

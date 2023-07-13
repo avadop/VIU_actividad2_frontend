@@ -24,3 +24,9 @@ export enum TipoCita {
   ANALITICA = 'analitica',
   PELUQUERIA = 'peluqueria'
 }
+
+export enum EstadoCita {
+  OCUPADA,
+  LIBRE,
+  SELECCIONADA
+}
