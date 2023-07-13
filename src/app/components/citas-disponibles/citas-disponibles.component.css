@@ -33,3 +33,14 @@
 .column-width {
     width: 20%;
 }
+
+.citas-disponibles-confirm-btn {
+    font-size: 1.4rem;
+    width: 10.5rem;
+}
+
+.citas-disponibles-header {
+    display: flex;
+    justify-content: space-between;
+    align-items:flex-end;
+}
