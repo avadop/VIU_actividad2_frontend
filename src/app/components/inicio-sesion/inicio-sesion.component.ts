@@ -37,8 +37,8 @@ export class InicioSesionComponent {
 
   onSubmit() :void {
     if(this.formInicioSesion.dni && this.formInicioSesion.password) {
-      this.clientService.clienteLogIn(this.formInicioSesion.dni, this.formInicioSesion.password).subscribe({
-        next: (infoLogIn:any) => {
+      this.clientService.clienteLogIn(this.formInicioSesion.dni, this.formInicioSesion.password)
+      .subscribe((infoLogIn:any) => {
           if(infoLogIn.statusCode === 200) {
             this.loggedUserService.setUserId(infoLogIn.data);
             window.location.reload();
@@ -47,8 +47,7 @@ export class InicioSesionComponent {
             this.errorType = infoLogIn.statusCode;
             this.errorMessage = infoLogIn.message;
           }
-        }
-      });
+        });
     }
   }
 }

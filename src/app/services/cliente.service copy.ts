@@ -9,6 +9,10 @@ const apiUrl = "http://localhost/api/clientes/";
 export class ClienteService {
   constructor(private http: HttpClient) {}
 
+  public getClientById(id: string) {
+    return this.http.get(`${apiUrl}${id}`);
+  }
+
   public clienteLogIn(dni: string, password: string):Observable<any>{
     return this.http.get(`${apiUrl}log-in/${dni}/${password}`);
   }
