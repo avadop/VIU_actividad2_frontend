@@ -13,15 +13,13 @@ import { CitasDisponiblesComponent } from './components/citas-disponibles/citas-
 import { ErrorComponent } from './components/error/error.component';
 import { LoggedUserService } from './services/loggedUser.service';
 import { PedirCitaComponent } from './components/pedir-cita/pedir-cita.component';
-import { CitasProgramadasComponent } from './components/citas-programadas/citas-programadas.component';
+import { CitasProgramadasComponent } from './components/user/citas-programadas/citas-programadas.component';
 import { DayNumberPipe } from './pipes/dayNumberPipe';
-
-import { registerLocaleData } from '@angular/common';
-import localeEs from '@angular/common/locales/es';
-import localeEsExtra from '@angular/common/locales/extra/es';
 import { MonthNamePipe } from './pipes/monthNamePipe';
+import { UserComponent } from './components/user/user.component';
+import { MascotasComponent } from './components/user/mascotas/mascotas.component';
+import { PerfilUsuarioComponent } from './components/user/perfil-usuario/perfil-usuario.component';
 
-registerLocaleData(localeEs, 'fr-FR', localeEsExtra);
 
 @NgModule({
   declarations: [
@@ -35,7 +33,10 @@ registerLocaleData(localeEs, 'fr-FR', localeEsExtra);
     PedirCitaComponent,
     CitasProgramadasComponent,
     DayNumberPipe,
-    MonthNamePipe
+    MonthNamePipe,
+    UserComponent,
+    MascotasComponent,
+    PerfilUsuarioComponent,
   ],
   imports: [
     BrowserModule,

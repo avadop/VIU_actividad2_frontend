@@ -8,17 +8,17 @@
     <span>{{userName}}</span>
   </div>
   <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
-    <li class="dropdown-item-container">
+    <li class="dropdown-item-container" (click)="redirectOnClick('/user')">
       <img src="assets/images/menu-icons/user.svg">
       <span >Ver perfil</span>
     </li>
     <li><hr class="dropdown-divider"></li>
-    <li class="dropdown-item-container">
+    <li class="dropdown-item-container" (click)="redirectOnClick('/user/mascotas')">
       <img src="assets/images/menu-icons/mascotas.svg" >
       <span >Mascotas</span>
     </li>
     <li><hr class="dropdown-divider"></li>
-    <li class="dropdown-item-container" (click)="redirectOnClick('/citas-programadas')">
+    <li class="dropdown-item-container" (click)="redirectOnClick('/user/citas-programadas')">
       <img src="assets/images/menu-icons/citas.svg">
       <span >Citas</span>
     </li>
