@@ -9,7 +9,7 @@ const apiUrl = "http://localhost/api/clientes/";
 export class ClienteService {
   constructor(private http: HttpClient) {}
 
-  public getClientById(id: string) {
+  public getClientById(id: string | null) {
     return this.http.get(`${apiUrl}${id}`);
   }
 
