@@ -1,0 +1,22 @@
+
+.pedir-cita-form {
+    display: flex;
+    margin-left: 2rem;
+}
+
+.pedir-cita-info {
+    text-align: center;
+}
+
+.pedir-cita-info > p:first-child {
+    font-size: 1.125em;
+    font-weight: 600;
+}
+
+.pedir-cita-select {
+    text-align: left;
+}
+
+.pedir-cita-actions {
+    width: 11rem;
+}

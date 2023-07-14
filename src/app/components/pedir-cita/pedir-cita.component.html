@@ -1,5 +1,57 @@
 <div class="white-container">
-    <h1>Confirmar cita</h1>
-    <h3>DIA: {{day | date: 'dd/MM/yyyy'}}</h3>
-    <h3>HORA: {{hora | date: 'hh:mm'}}</h3>
+    <h1>Asignación de cita</h1>
+    <form class="mt-4" (ngSubmit)="onSubmit()" #pedirCitaForm="ngForm">
+        <div class="container text-center">
+            <div class="row">
+                <div class="col me-4">
+                    <div class="info-container pedir-cita-info">
+                        <p class="mb-2">Detalles de la cita</p>
+                        <p class="mb-2">Hora: {{cita.hora | date: 'hh:mm'}} - {{finalCita | date: 'hh:mm'}}</p>
+                        <p class="mb-0">Fecha: {{cita.fecha | date: 'dd/MM/yyyy'}}</p>
+                    </div>
+                    <div class="pedir-cita-select mt-4">
+                        <label for="tipo" class="form-label">Tipo de cita</label>
+                        <select class="form-select" id="modalidad" name="tipo" #tipo="ngModel" [(ngModel)]="cita.tipo">
+                            <option value="consulta_general">Consulta general</option>
+                            <option value="vacunacion">Vacunación</option>
+                            <option value="peluqueria">Peluquería</option>
+                        </select>
+        
+                        <label for="modalidad" class="form-label mt-4">Modalidad de cita</label>
+                        <select class="form-select" id="modalidad" name="modalidad" #modalidad="ngModel"
+                            [(ngModel)]="cita.modalidad">
+                            <option value="presencial">Presencial</option>
+                            <option value="online">Online</option>
+                            <option value="a_domicilio">A domicilio</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="info-container pedir-cita-info">
+                        <p class="mb-2">Datos del cliente</p>
+                        <p class="mb-2">Nombre: {{cliente.nombre}} {{cliente.apellidos }}</p>
+                        <p class="mb-0">DNI: {{cliente.dni}}</p>
+                    </div>
+                    <div class="pedir-cita-select mt-4">
+                        <label for="mascota" class="form-label">Mascota del cliente</label>
+                        <select class="form-select" id="mascota" name="mascota" #mascota="ngModel" [(ngModel)]="cita.mascota">
+                            <option value="0">Elige la mascota para la que es la cita</option>
+                            <option *ngFor="let mascota of mascotasCliente" value="{{mascota.numChip}}">{{mascota.nombre}} - nº
+                                chip {{mascota.numChip}}</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col">
+                    Column
+                </div>
+            </div>
+            <div class="row mt-4">
+                <div class="col text-end me-4">
+                    <button type="submit" class="btn btn-orange-contrast pedir-cita-actions ">Cancelar</button>
+                </div><div class="col  text-start">
+                    <button type="submit" class="btn btn-orange pedir-cita-actions " [disabled]="cita.mascota == 0">Continuar</button>
+                </div><div class="col"></div>
+            </div>
+        </div>
+    </form>
 </div>
