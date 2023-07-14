@@ -29,7 +29,7 @@
                 <div class="col">
                     <div class="info-container pedir-cita-info">
                         <p class="mb-2">Datos del cliente</p>
-                        <p class="mb-2">Nombre: {{cliente.nombre}} {{cliente.apellidos }}</p>
+                        <p class="mb-2">Nombre: {{cliente.nombre}}</p>
                         <p class="mb-0">DNI: {{cliente.dni}}</p>
                     </div>
                     <div class="pedir-cita-select mt-4">
@@ -44,7 +44,7 @@
             </div>
             <div class="row mt-5">
                 <div class=" col text-end me-4 mt-4">
-                    <button class="btn btn-orange-contrast pedir-cita-actions ">Cancelar</button>
+                    <button class="btn btn-orange-contrast pedir-cita-actions" (click)="cancel()">Cancelar</button>
                 </div><div class="col text-start mt-4">
                     <button type="submit" class="btn btn-orange pedir-cita-actions " [disabled]="cita.mascota == 0">Continuar</button>
                 </div>

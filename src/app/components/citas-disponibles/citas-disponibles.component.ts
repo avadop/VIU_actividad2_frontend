@@ -143,7 +143,7 @@ export class CitasDisponiblesComponent {
     let arrayCitasSemana = new Array<{hora: string, day: Date}>();
   
     citas.forEach((cita: Cita) => {
-      if(this.isDateInWeek(cita.fecha)) {
+      if(this.isDateInWeek(new Date(cita.fecha))) {
         arrayCitasSemana.push({day: new Date(cita.fecha), hora: cita.hora.toString()});
       }
     });

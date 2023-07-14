@@ -17,4 +17,8 @@ export class ClienteService {
     return this.http.get(`${apiUrl}log-in/${dni}/${password}`);
   }
 
+  public getMascotasCliente(id: string | null) {
+    return this.http.get(`${apiUrl}${id}/mascotas`)
+  }
+
 }

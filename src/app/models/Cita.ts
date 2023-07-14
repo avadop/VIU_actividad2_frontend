@@ -1,12 +1,12 @@
 export class Cita{
   constructor( 
-    public id_cita: number, 
-    public hora: Date, 
-    public fecha: Date, 
+    public hora: string, 
+    public fecha: string, 
     public modalidad_cita: ModalidadCita, 
     public tipo_cita: TipoCita,
-    public id_clinica: string,
-    public num_chip: number
+    public id_clinica: number,
+    public num_chip: number,
+    public id_cita?: number
     ) {
   }
 }

@@ -3,7 +3,7 @@ import { HttpClient } from "@angular/common/http";
 import { Observable } from 'rxjs';
 import { Cita } from "../models/Cita";
 
-const apiUrl = "http://localhost/api/citas";
+const apiUrl = "http://localhost/api/citas/";
 
 @Injectable()
 export class CitaService {
