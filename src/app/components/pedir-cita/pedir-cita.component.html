@@ -1,7 +1,7 @@
 <div class="white-container">
     <h1>Asignación de cita</h1>
-    <form class="mt-4" (ngSubmit)="onSubmit()" #pedirCitaForm="ngForm">
-        <div class="container text-center">
+    <form class="mt-4 pedir-cita-form" (ngSubmit)="onSubmit()" #pedirCitaForm="ngForm">
+        <div class="container">
             <div class="row">
                 <div class="col me-4">
                     <div class="info-container pedir-cita-info">
@@ -41,17 +41,17 @@
                         </select>
                     </div>
                 </div>
-                <div class="col">
-                    <img src="assets/images/pedir-cita.svg">
+            </div>
+            <div class="row mt-5">
+                <div class=" col text-end me-4 mt-4">
+                    <button class="btn btn-orange-contrast pedir-cita-actions ">Cancelar</button>
+                </div><div class="col text-start mt-4">
+                    <button type="submit" class="btn btn-orange pedir-cita-actions " [disabled]="cita.mascota == 0">Continuar</button>
                 </div>
             </div>
-            <div class="row mt-4">
-                <div class="col text-end me-4">
-                    <button type="submit" class="btn btn-orange-contrast pedir-cita-actions ">Cancelar</button>
-                </div><div class="col  text-start">
-                    <button type="submit" class="btn btn-orange pedir-cita-actions " [disabled]="cita.mascota == 0">Continuar</button>
-                </div><div class="col"></div>
-            </div>
+        </div>
+        <div>
+            <img class="pedir-cita-image ms-4" src="assets/images/pedir-cita.svg">
         </div>
     </form>
 </div>

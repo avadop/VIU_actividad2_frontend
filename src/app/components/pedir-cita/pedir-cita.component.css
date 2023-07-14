@@ -1,7 +1,7 @@
 
 .pedir-cita-form {
     display: flex;
-    margin-left: 2rem;
+    flex-wrap:nowrap;
 }
 
 .pedir-cita-info {
@@ -19,4 +19,8 @@
 
 .pedir-cita-actions {
     width: 11rem;
+}
+
+.pedir-cita-image {
+    width: 17rem;
 }
