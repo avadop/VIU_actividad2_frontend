@@ -15,11 +15,15 @@
     <tbody>
       <tr *ngFor="let hour of hours.slice(0,7); let hourIdx = index">
         <th scope="row" class="time-row"><span>{{hour.start | date: 'HH:mm'}}</span><span>{{hour.end | date: 'HH:mm'}}</span></th>
-        <td *ngFor="let state of tableContent[hourIdx]; let dayIdx = index" [ngClass]="{
-          'celda-ocupada': state === 0,
-          'celda-libre': state === 1,
-          'celda-seleccionada': state === 2
-        }"></td>
+        <td *ngFor="let cita of tableContent[hourIdx]; let dayIdx = index" [ngClass]="{
+          'celda-ocupada': cita.numChip !== 0
+        }"> 
+        <div *ngIf="cita.numChip !== 0">
+          <span>{{cita.nombreMascota}}</span>
+          <span>nº chip - {{cita.numChip}}</span>
+          <span>{{cita.tipoCita}}</span>
+        </div>
+        </td>
       </tr>
     </tbody>
   </table>
@@ -28,11 +32,13 @@
     <tbody>
       <tr scope="row" *ngFor="let hour of hours.slice(7,hours.length); let hourIdx = index">
         <th class="time-row"><span>{{hour.start | date: 'HH:mm'}}</span><span>{{hour.end | date: 'HH:mm'}}</span></th>
-        <td class="column-width" *ngFor="let state of tableContent[hourIdx+7]; let dayIdx = index" [ngClass]="{
-          'celda-ocupada': state === 0,
-          'celda-libre': state === 1,
-          'celda-seleccionada': state === 2
-        }"></td>
+        <td class="column-width" *ngFor="let cita of tableContent[hourIdx+7]; let dayIdx = index" [ngClass]="{
+          'celda-ocupada': cita.numChip !== 0
+        }">
+          <div *ngIf="cita.numChip !== 0">
+            <span>{{cita.nombreMascota}}<span></span>nº chip - {{cita.numChip}}<span></span>{{cita.tipoCita}}</span>
+          </div>
+        </td>
       </tr>
     </tbody>
   </table>

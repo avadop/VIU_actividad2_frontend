@@ -37,12 +37,16 @@
     justify-content: space-between;
     align-items:flex-end;
 }
-.celda-libre {
-    background-color: #D9D9D9;
+.celda-ocupada {
+    background-color: rgba(255, 126, 103, 0.5);
+    /* Falta opacity = 50% */
+    font-size: 15px;
+
 }
 
-.celda-seleccionada {
-    background-color: #3bb143;
+.celda-ocupada > div {
+    display: flex;
+    flex-direction: column;
 }
 
 .week-nav-container {

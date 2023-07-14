@@ -6,7 +6,7 @@
   <div class="main-page__button-container">
     <ng-container *ngIf="userId; else loggedOut">
       <button type="button" class="btn btn-orange main-page__button--margin-right main-page__button--logged-in" (click)="redirectOnClick('/citas-disponibles')">Pedir nueva cita</button>
-      <button type="button" class="btn btn-orange-contrast main-page__button--logged-in main-page__button--margin-left">Consultar citas pedidas</button>
+      <button type="button" class="btn btn-orange-contrast main-page__button--logged-in main-page__button--margin-left" (click)="redirectOnClick('/user/citas-programadas')">Consultar citas pedidas</button>
     </ng-container>
     <ng-template #loggedOut>
       <button type="button" class="btn btn-orange main-page__button--logged-out main-page__button--margin-right" (click)="redirectOnClick('/inicio-sesion')">Iniciar sesión</button>

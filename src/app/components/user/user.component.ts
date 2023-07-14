@@ -13,7 +13,7 @@ export class UserComponent {
   public user: Cliente;
 
   constructor(private loggedUserService: LoggedUserService, private clientService:ClienteService) {
-    this.user = {dni:'', contrasenya:'', nombre: 'Fulanito', apellidos: '',telefono: '', direccion: '' };
+    this.user = {dni:'', contrasenya:'', nombre: '', apellidos: '',telefono: '', direccion: '' };
   }
 
   ngOnInit() {

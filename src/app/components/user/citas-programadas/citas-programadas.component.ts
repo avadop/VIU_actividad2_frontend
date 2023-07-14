@@ -1,35 +1,53 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { Router } from '@angular/router';
-import { Cita, EstadoCita } from 'src/app/models/Cita';
+import { Cita, TipoCita } from 'src/app/models/Cita';
+import { Mascota } from 'src/app/models/Mascota';
 import { CitaService } from 'src/app/services/cita.service';
+import { ClienteService } from 'src/app/services/cliente.service copy';
+import { LoggedUserService } from 'src/app/services/loggedUser.service';
 
 @Component({
   selector: 'app-citas-programadas',
   templateUrl: './citas-programadas.component.html',
   styleUrls: ['./citas-programadas.component.css'],
-  providers: [CitaService]
+  providers: [CitaService, ClienteService]
 })
 export class CitasProgramadasComponent {
+  public mascotasCliente: Array<Mascota>;
+
   public citas: Array<Cita>;
 
   public days: Array<Date>;
 
   public hours: Array<{start: Date, end:Date}>;
 
-  public tableContent: Array<Array<EstadoCita>>;
+  public tableContent: Array<Array<{nombreMascota: any, numChip: number, tipoCita: string}>>;
 
   public selectedCell: {hour: number , day: number};
 
   public shownWeek: number;
 
-  constructor(private citaService: CitaService, private router:Router) {
+  constructor(
+    private citaService: CitaService,
+    private clientService: ClienteService, 
+    private loggedUserService: LoggedUserService, 
+    private router:Router
+    ) {
     this.citas = [];
     this.days = this.getCurrentWeek();
     this.hours = this.getDefinedHours();
     this.shownWeek = 0;
     this.selectedCell = {hour: -1, day: -1};
+    this.mascotasCliente = new Array();
+    this.tableContent = new Array();
+  }
+
+  ngOnInit() {
+    this.clientService.getMascotasCliente(this.loggedUserService.getUserId()).subscribe(
+      (infoCliente:any) => this.mascotasCliente = infoCliente.data
+    );
   
-    this.tableContent = new Array<Array<EstadoCita>>();
+    this.tableContent = new Array<Array<{nombreMascota: any, numChip: number, tipoCita: string}>>();
     this.citaService.getAllCitas().subscribe((infoCitas:any) => {
         this.citas = infoCitas.data;
         this.tableContent = this.fillTableContent(infoCitas.data);
@@ -134,29 +152,36 @@ export class CitasProgramadasComponent {
     }
   }
 
-  fillTableContent(citas: Array<Cita>): Array<Array<EstadoCita>> {
-    let initialArray = new Array<Array<EstadoCita>>();
+  fillTableContent(citas: Array<Cita>): Array<Array<{nombreMascota: any, numChip: number, tipoCita: string}>> {
+    let initialArray = new Array<Array<{nombreMascota: any, numChip: number, tipoCita: string}>>();
     for(let i = 0; i < this.hours.length; i++) {
-      initialArray.push(new Array<EstadoCita>(this.days.length).fill(EstadoCita.LIBRE));
+      initialArray.push(new Array<{nombreMascota: any, numChip: number, tipoCita: string}>(this.days.length).fill(
+        {nombreMascota: '', numChip: 0, tipoCita: ''}
+      ));
     }
 
-  //   let arrayCitasSemana = new Array<{hora: string, day: Date}>();
+     let arrayCitasSemana = new Array<{hora: string, day: Date, tipoCita: string, numChip: number}>();
   
-  //   citas.forEach((cita: Cita) => {
-  //     if(this.isDateInWeek(cita.fecha)) {
-  //       arrayCitasSemana.push({day: new Date(cita.fecha), hora: cita.hora.toString()});
-  //     }
-  //   });
+     citas.forEach((cita: Cita) => {
+       if(this.isDateInWeek(new Date(cita.fecha))) {
+         arrayCitasSemana.push({day: new Date(cita.fecha), hora: cita.hora.toString(), tipoCita: this.tipoCitaString(cita.tipo_cita), numChip: cita.num_chip});
+       }
+     });
 
-  //   this.hours.forEach((hour, hourIdx) => {
-  //     this.days.forEach((day, dayIdx) => {
-  //       arrayCitasSemana.forEach(cita => {
-  //         if(cita.day.getDate() === day.date.getDate() && cita.hora===hour.start.toLocaleTimeString()) {
-  //           initialArray[hourIdx][dayIdx] = EstadoCita.OCUPADA;
-  //         }
-  //       })
-  //     })
-  //   });
+     this.hours.forEach((hour, hourIdx) => {
+       this.days.forEach((day, dayIdx) => {
+         arrayCitasSemana.forEach(cita => {
+          const userMascota = this.mascotasCliente.find((mascota: Mascota) => mascota.num_chip === cita.numChip);
+           if(cita.day.getDate() === day.getDate() && cita.hora===hour.start.toLocaleTimeString() && userMascota) {
+             initialArray[hourIdx][dayIdx] = {
+              nombreMascota: userMascota?.nombre_mascota,
+              numChip: cita.numChip,
+              tipoCita: cita.tipoCita
+             };
+           }
+         })
+       })
+     });
 
     return initialArray;
   }
@@ -171,6 +196,24 @@ export class CitasProgramadasComponent {
 
     const formatDate = new Date(date);
     return formatDate >= firstDayOfWeek && formatDate <= lastDayOfWeek;
+  }
+
+  tipoCitaString(tipo : TipoCita) : string{
+    switch (tipo){
+      case TipoCita.ANALITICA:
+        return 'Analítica';
+      case TipoCita.CIRUGIA:
+        return 'Cirugía';
+      case TipoCita.CONSULTA_GENERAL:
+        return 'Consulta general';
+      case TipoCita.VACUNACION:
+        return 'Vacunación';
+      case TipoCita.PELUQUERIA:
+        return 'Peluquería';
+      default:
+        return '';
+    }
+    
   }
 
 }
