@@ -16,7 +16,7 @@ export class HeaderComponent {
 
   constructor(private loggedUserService: LoggedUserService, private router:Router, private clientService: ClienteService) {
     this.userId = this.loggedUserService.getUserId();
-    this.userName = 'Fulanito gonzalez';
+    this.userName = '';
   }
 
   ngOnInit() {
