@@ -30,7 +30,6 @@
     background-color: #3bb143;
 }
 
-
 .column-width {
     width: 20%;
 }
@@ -68,4 +67,14 @@
 
 .week-nav-container >div > button:first-child {
     margin-right: 1.5rem;
+}
+
+.week-nav-container > div > button{
+    display: flex;
+    align-items: center;
+}
+
+.week-nav-container > div > button > img{
+    display: flex;
+    align-items: center;
 }
