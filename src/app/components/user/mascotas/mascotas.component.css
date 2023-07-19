@@ -1,0 +1,27 @@
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }  
+
+.imgTam{
+    width: 90px;
+    height: 90px;
+    float: left;
+}
+
+button {
+    display: inline;
+}
+
+.tarjetas-container {
+    margin-top: 20px; 
+  }
+
+.efectos {
+    border: 1px solid #ccc; 
+    border-radius: 8px; 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+    cursor: pointer;
+}
+  

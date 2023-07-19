@@ -11,6 +11,8 @@ import { CitasProgramadasComponent } from "./components/user/citas-programadas/c
 import { UserComponent } from "./components/user/user.component";
 import { MascotasComponent } from "./components/user/mascotas/mascotas.component";
 import { PerfilUsuarioComponent } from "./components/user/perfil-usuario/perfil-usuario.component";
+import { MascotasAltaComponent } from "./components/user/mascotas/mascotas-alta/mascotas-alta.component";
+import { MascotasDetalleComponent } from "./components/user/mascotas/mascotas-detalle/mascotas-detalle.component";
 
 const appRoutes: Routes = [
   {path: '', component: MainPageComponent},
@@ -22,6 +24,8 @@ const appRoutes: Routes = [
   {path: 'user', component: UserComponent, children: [
     {path: '', component: PerfilUsuarioComponent},
     {path: 'mascotas', component: MascotasComponent},
+    {path: 'mascotas-alta', component: MascotasAltaComponent},
+    {path: 'mascotas-detalle/:numChip', component: MascotasDetalleComponent},
     {path: 'citas-programadas', component: CitasProgramadasComponent}
   ]},
   {path: '**', component: ErrorComponent}

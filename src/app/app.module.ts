@@ -3,6 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { routing } from './app.routing';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
+import { MatCardModule } from '@angular/material/card';
 
 import { AppComponent } from './app.component';
 import { MainPageComponent } from './components/main-page/main-page.component';
@@ -19,7 +20,8 @@ import { MonthNamePipe } from './pipes/monthNamePipe';
 import { UserComponent } from './components/user/user.component';
 import { MascotasComponent } from './components/user/mascotas/mascotas.component';
 import { PerfilUsuarioComponent } from './components/user/perfil-usuario/perfil-usuario.component';
-
+import { MascotasAltaComponent } from './components/user/mascotas/mascotas-alta/mascotas-alta.component';
+import { MascotasDetalleComponent } from './components/user/mascotas/mascotas-detalle/mascotas-detalle.component';
 
 @NgModule({
   declarations: [
@@ -37,9 +39,12 @@ import { PerfilUsuarioComponent } from './components/user/perfil-usuario/perfil-
     UserComponent,
     MascotasComponent,
     PerfilUsuarioComponent,
+    MascotasAltaComponent,
+    MascotasDetalleComponent,
   ],
   imports: [
     BrowserModule,
+    MatCardModule,
     routing,
     HttpClientModule,
     FormsModule

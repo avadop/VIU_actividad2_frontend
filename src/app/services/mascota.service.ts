@@ -15,4 +15,8 @@ export class MascotaService {
   public getMascotaById(numChip:number):Observable<any>{
     return this.http.get(`${apiUrl}${numChip}`);
   }
+
+  public createMascota(mascota: Mascota):Observable<any>{
+    return this.http.post(`${apiUrl}new`, mascota);
+  }
 }
