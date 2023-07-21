@@ -1,27 +1,28 @@
 .header-container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }  
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
 
-.imgTam{
-    width: 90px;
-    height: 90px;
-    float: left;
+.imgTam {
+  width: 90px;
+  height: 90px;
+  float: left;
 }
 
 button {
-    display: inline;
+  display: inline;
 }
 
 .tarjetas-container {
-    margin-top: 20px; 
-  }
+  margin-top: 20px;
+  flex: 1;
+  margin-right: 10px;
+}
 
 .efectos {
-    border: 1px solid #ccc; 
-    border-radius: 8px; 
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
-    cursor: pointer;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
 }
-  
