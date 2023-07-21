@@ -1,3 +1,82 @@
-<div class="white-container">
-  <h1>Registro de usuario</h1>
+<div class="white-container registro-usuario">
+  <h1 class="text-right">Registro de Usuario</h1>
+  <form #registroForm="ngForm" (ngSubmit)="onSubmit(registroForm)">
+    <div class="row">
+      <div class="col-4">
+        <!-- Campos a la izquierda -->
+        <div class="mb-3">
+          <label for="dni" class="form-label">DNI</label>
+          <input type="text" id="dni" class="form-control" name="dni" placeholder="Ingrese su DNI" required [(ngModel)]="userData.dni" #dni="ngModel">
+          <div *ngIf="dni?.errors?.['required'] && (dni.dirty || dni.touched)" class="text-danger">
+            El DNI es requerido.
+          </div>
+        </div>
+        <div class="mb-3">
+          <label for="nombre" class="form-label">Nombre</label>
+          <input type="text" id="nombre" class="form-control" name="nombre" placeholder="Ingrese su nombre" required [(ngModel)]="userData.nombre" #nombre="ngModel">
+          <div *ngIf="nombre?.errors?.['required'] && (nombre.dirty || nombre.touched)" class="text-danger">
+            El nombre es requerido.
+          </div>
+        </div>
+        <div class="mb-3">
+          <label for="apellidos" class="form-label">Apellidos</label>
+          <input type="text" id="apellidos" class="form-control" name="apellidos" placeholder="Ingrese sus apellidos" required [(ngModel)]="userData.apellidos" #apellidos="ngModel">
+          <div *ngIf="apellidos?.errors?.['required'] && (apellidos.dirty || apellidos.touched)" class="text-danger">
+            Los apellidos son requeridos.
+          </div>
+        </div>
+        <div class="mb-3">
+          <label for="direccion" class="form-label">Dirección</label>
+          <input type="text" id="direccion" class="form-control" name="direccion" placeholder="Ingrese su dirección" required [(ngModel)]="userData.direccion" #direccion="ngModel">
+          <div *ngIf="direccion?.errors?.['required'] && (direccion.dirty || direccion.touched)" class="text-danger">
+            La dirección es requerida.
+          </div>
+        </div>
+      </div>
+      <div class="col-4">
+        <!-- Campos en el centro -->
+        <div class="mb-3">
+          <label for="telefono" class="form-label">Teléfono</label>
+          <input type="tel" id="telefono" class="form-control" name="telefono" placeholder="Ingrese su teléfono" required [(ngModel)]="userData.telefono" #telefono="ngModel">
+          <div *ngIf="telefono?.errors?.['required'] && (telefono.dirty || telefono.touched)" class="text-danger">
+            El teléfono es requerido.
+          </div>
+        </div>
+        <div class="mb-3">
+          <label for="correo_electronico" class="form-label">Correo Electrónico</label>
+          <input type="email" id="correo_electronico" class="form-control" name="correo_electronico" placeholder="Ingrese su correo electrónico" required [(ngModel)]="userData.correo_electronico" #correo_electronico="ngModel">
+          <div *ngIf="correo_electronico?.errors?.['required'] && (correo_electronico.dirty || correo_electronico.touched)" class="text-danger">
+            El correo electrónico es requerido.
+          </div>
+          <div *ngIf="correo_electronico?.errors?.['email'] && (correo_electronico.dirty || correo_electronico.touched)" class="text-danger">
+            Ingrese un correo electrónico válido.
+          </div>
+        </div>
+        <div class="mb-3">
+          <label for="contrasenya" class="form-label">Contraseña</label>
+          <input type="password" id="contrasenya" class="form-control" name="contrasenya" placeholder="Ingrese su contraseña" required [(ngModel)]="userData.contrasenya" #contrasenya="ngModel">
+          <div *ngIf="contrasenya?.errors?.['required'] && (contrasenya.dirty || contrasenya.touched)" class="text-danger">
+            La contraseña es requerida.
+          </div>
+        </div>
+        <div class="mb-3">
+          <label for="confirmPassword" class="form-label">Confirmar Contraseña</label>
+          <input type="password" id="confirmPassword" class="form-control" name="confirmPassword" placeholder="Confirme su contraseña" required [(ngModel)]="userData.confirmPassword" #confirmPassword="ngModel">
+          <div *ngIf="confirmPassword?.errors?.['required'] && (confirmPassword.dirty || confirmPassword.touched)" class="text-danger">
+            La confirmación de contraseña es requerida.
+          </div>
+          <div *ngIf="confirmPassword?.errors?.['mustMatch'] && (confirmPassword.dirty || confirmPassword.touched)" class="text-danger">
+            Las contraseñas no coinciden.
+          </div>
+        </div>
+      </div>
+      <!-- Resto del formulario -->
+      <!-- ... -->
+    </div>
+    <div class="row">
+      <div class="col-4">
+        <button type="submit" class="btn btn-primary btn-registrarse">Registrarse</button>
+      </div>
+    </div>
+  </form>
 </div>

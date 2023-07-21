@@ -1,2 +1,14 @@
-<h1> Datos personales</h1>
+<div class="white-container perfil-usuario">
+    <h1>Datos Personales</h1>
+    <div *ngIf="usuario">
+      <p><strong>DNI:</strong> {{ usuario.dni }}</p>
+      <p><strong>Nombre:</strong> {{ usuario.nombre }}</p>
+      <p><strong>Apellidos:</strong> {{ usuario.apellidos }}</p>
+      <p><strong>Dirección:</strong> {{ usuario.direccion }}</p>
+      <p><strong>Teléfono:</strong> {{ usuario.telefono }}</p>
+    </div>
+    <div *ngIf="!usuario">
+      <p>No se encontraron datos del usuario. Asegúrate de haber iniciado sesión.</p>
+    </div>
+  </div>
 
