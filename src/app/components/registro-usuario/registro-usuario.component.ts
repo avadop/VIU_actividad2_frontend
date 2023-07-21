@@ -7,7 +7,7 @@ import { UserRegisterService } from 'src/app/services/userRegister.service';
   styleUrls: ['./registro-usuario.component.css']
 })
 export class RegistroUsuarioComponent {
-  userData: any = {
+  public userData: any = {
     dni: '',
     nombre: '',
     apellidos: '',
@@ -22,7 +22,7 @@ export class RegistroUsuarioComponent {
   onSubmit(form: any): void {
     if (form.valid) {
       // Verificar si las contraseñas coinciden
-      if (this.userData.password !== this.userData.confirmPassword) {
+      if (this.userData.contrasenya !== this.userData.contrasenya) {
         form.controls['confirmPassword'].setErrors({ mustMatch: true });
         return;
       }
@@ -32,12 +32,6 @@ export class RegistroUsuarioComponent {
         (response) => {
           // El usuario fue registrado correctamente
           console.log('Usuario registrado:', response);
-          // Puedes agregar aquí redirección a otra página o mostrar un mensaje de éxito
-        },
-        (error) => {
-          // Ocurrió un error al registrar al usuario
-          console.error('Error al registrar usuario:', error);
-          // Puedes mostrar un mensaje de error al usuario si lo deseas
         }
       );
     }
