@@ -20,13 +20,14 @@ export class TiendaComponent implements OnInit {
   getProductos(): void {
     this.productoService.getProductos().subscribe(
       (infoProducto: any) => {
-        // Simulamos un retraso de 1 segundo antes de asignar los productos
-        setTimeout(() => {
-          this.productos = infoProducto.data;
-          console.log('Productos obtenidos:', this.productos);
-        }, 1000);
+        this.productos = infoProducto.data;
+        console.log('Productos obtenidos:', this.productos);
       },
+      (error) => {
+        console.error('Error al obtener los productos:', error);
+      }
     );
   }
 }
+
 
