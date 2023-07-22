@@ -29,4 +29,10 @@ export class MascotaService {
     const random = Math.random() * 3;
     return Math.ceil(random);
   }
+
+  public parseInformes(informes: string): string[] {
+    const parsedIndormes: string[] = [];
+
+    return parsedIndormes;
+  }
 }

@@ -11,7 +11,7 @@ import { MascotaService } from 'src/app/services/mascota.service';
   styleUrls: ['./mascotas.component.css'],
 })
 export class MascotasComponent {
-  public mascotas: Mascota[] = [];
+  public mascotas: Mascota[];
   public message: string;
   public error: boolean;
 
@@ -23,6 +23,7 @@ export class MascotasComponent {
   ) {
     this.message = '';
     this.error = false;
+    this.mascotas = [];
   }
 
   ngOnInit() {
@@ -32,8 +33,22 @@ export class MascotasComponent {
   getMascotas() {
     this.clienteService
       .getMascotasCliente(this.loggedUserService.getUserId())
-      .subscribe((mascotas: any) => {
-        this.mascotas = mascotas.data;
+      .subscribe((response: any) => {
+        console.log('Response get Mascota: ', response);
+        for (let dato of response.data) {
+          const mascota = new Mascota();
+          mascota.dni = dato.dni;
+          mascota.edad = dato.edad;
+          mascota.especie = dato.especie;
+          mascota.historial_clinico = dato.historial_clinico;
+          mascota.informes_de_mascota = JSON.parse(dato.informes_de_mascota);
+          mascota.nombre_mascota = dato.nombre_mascota;
+          mascota.num_chip = dato.num_chip;
+          mascota.sexo = dato.sexo;
+          mascota.vacunas = dato.vacunas;
+
+          this.mascotas.push(mascota);
+        }
 
         this.mascotas.forEach((mascota: Mascota) => {
           const randomNumber = this.mascotasService.getRandomNumber();
@@ -46,7 +61,7 @@ export class MascotasComponent {
     this.router.navigate(['user/mascotas-alta']);
   }
 
-  editarMascota(numChip: number) {}
+  editarMascota(mascota: Mascota) {}
   eliminarMascota(numChip: number) {
     this.mascotasService.deleteMascota(numChip).subscribe((response) => {
       if (response.statusCode === 200) {
@@ -59,7 +74,9 @@ export class MascotasComponent {
     });
   }
 
-  detalleMascota(numChip: number) {
-    this.router.navigate(['user/mascotas-detalle', numChip]);
+  detalleMascota(mascota: Mascota) {
+    this.router.navigate(['user/mascotas-detalle', mascota.num_chip], {
+      state: { mascota },
+    });
   }
 }
