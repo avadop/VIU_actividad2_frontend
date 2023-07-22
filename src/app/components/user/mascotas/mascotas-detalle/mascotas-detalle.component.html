@@ -76,17 +76,15 @@
       </div>
     </div>
   </div>
+
   <div class="row">
-    <div class="col me-4">
-      <p class="mb-2">Informes</p>
+    <p class="mb-2">Informes</p>
+    <div
+      class="col me-4"
+      *ngFor="let infor of mascotaDetalle.mascota.informes_de_mascota"
+    >
       <div class="info-container">
-        <div
-          *ngFor="let infor of this.mascotaDetalle.mascota.informes_de_mascota"
-        >
-          <p class="mb-2">
-            {{ infor }}
-          </p>
-        </div>
+        <p class="mb-2">{{ infor }} <i class="bi bi-download"></i></p>
       </div>
     </div>
   </div>
