@@ -13,6 +13,7 @@ import { MascotasComponent } from "./components/user/mascotas/mascotas.component
 import { PerfilUsuarioComponent } from "./components/user/perfil-usuario/perfil-usuario.component";
 import { MascotasAltaComponent } from "./components/user/mascotas/mascotas-alta/mascotas-alta.component";
 import { MascotasDetalleComponent } from "./components/user/mascotas/mascotas-detalle/mascotas-detalle.component";
+import { TiendaComponent } from "./components/tienda/tienda.component";
 
 const appRoutes: Routes = [
   {path: '', component: MainPageComponent},
@@ -20,6 +21,7 @@ const appRoutes: Routes = [
   {path: 'inicio-sesion', component: InicioSesionComponent},
   {path: 'registro-usuario', component: RegistroUsuarioComponent},
   {path: 'citas-disponibles', component: CitasDisponiblesComponent},
+  {path: 'tienda', component: TiendaComponent},
   {path: 'pedir-cita/:dia/:hora', component: PedirCitaComponent},
   {path: 'user', component: UserComponent, children: [
     {path: '', component: PerfilUsuarioComponent},

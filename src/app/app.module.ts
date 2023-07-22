@@ -22,6 +22,7 @@ import { MascotasComponent } from './components/user/mascotas/mascotas.component
 import { PerfilUsuarioComponent } from './components/user/perfil-usuario/perfil-usuario.component';
 import { MascotasAltaComponent } from './components/user/mascotas/mascotas-alta/mascotas-alta.component';
 import { MascotasDetalleComponent } from './components/user/mascotas/mascotas-detalle/mascotas-detalle.component';
+import { TiendaComponent } from './components/tienda/tienda.component';
 
 @NgModule({
   declarations: [
@@ -41,6 +42,7 @@ import { MascotasDetalleComponent } from './components/user/mascotas/mascotas-de
     PerfilUsuarioComponent,
     MascotasAltaComponent,
     MascotasDetalleComponent,
+    TiendaComponent,
   ],
   imports: [
     BrowserModule,
