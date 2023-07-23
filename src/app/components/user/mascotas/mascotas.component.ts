@@ -31,6 +31,7 @@ export class MascotasComponent {
   }
 
   getMascotas() {
+    this.mascotas = [];
     this.clienteService
       .getMascotasCliente(this.loggedUserService.getUserId())
       .subscribe((response: any) => {

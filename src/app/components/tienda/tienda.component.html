@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container white-container">
   <h1 class="text-center mb-4">Bienvenido a la Tienda</h1>
   <div class="row">
     <div class="col-md-4 mb-4" *ngFor="let producto of productos">
@@ -14,10 +14,8 @@
           <p class="card-text"><strong>Cantidad Disponible:</strong> {{ producto.cantidad_disponible }}</p>
           <p class="card-text"><strong>Tipo de Producto:</strong> {{ producto.tipo_producto }}</p>
         </div>
-        <div class="card-footer">
           <!-- Botón de añadir -->
-          <button class="btn btn-primary">Añadir al Carrito</button>
-        </div>
+          <button class="btn btn-orange ms-3">Añadir al Carrito</button>
       </div>
     </div>
   </div>
