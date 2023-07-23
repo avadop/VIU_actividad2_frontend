@@ -1,6 +1,105 @@
-<p>mascotas-detalle works!</p>
+<div class="container">
+  <h2>Detalles de la mascota</h2>
+
+  <div class="row">
+    <div class="col me-4">
+      <p class="mb-2">Datos de la mascota</p>
+      <div class="info-container">
+        <div class="row">
+          <div class="col">
+            <img
+              class="imgTam"
+              [src]="
+                '../../../../assets/images/mascotas/' +
+                mascotaDetalle.mascota.imagen
+              "
+            />
+          </div>
+          <div class="col">
+            <p class="mb-2">
+              Nombre: {{ mascotaDetalle.mascota.nombre_mascota }}
+            </p>
+            <p class="mb-2">Sexo: {{ mascotaDetalle.mascota.sexo }}</p>
+            <p class="mb-2">Edad: {{ mascotaDetalle.mascota.edad }}</p>
+            <p class="mb-0">Especie: {{ mascotaDetalle.mascota.especie }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col me-4">
+      <p class="mb-2">Historial clínico</p>
+      <div
+        class="info-container"
+        *ngIf="mascotaDetalle.mascota.historial_clinico"
+      >
+        <p class="mb-2">{{ mascotaDetalle.mascota.historial_clinico }}</p>
+      </div>
+      <div
+        class="info-container"
+        *ngIf="!mascotaDetalle.mascota.historial_clinico"
+      >
+        <p class="mb-2">No hay historial clínico</p>
+      </div>
+    </div>
+    <div class="col me-4">
+      <p class="mb-2">Próximas citas</p>
+      <div class="info-container" *ngFor="let cita of mascotaDetalle.citas">
+        <p class="mb-2">Hora: {{ cita.hora }}</p>
+        <p class="mb-2">Fecha: {{ cita.fecha | date : "dd/MM/yyyy" }}</p>
+        <p class="mb-2">Tipo: {{ cita.tipo_cita }}</p>
+      </div>
+      <div class="info-container" *ngIf="mascotaDetalle.citas.length === 0">
+        <p class="mb-2">No hay citas disponibles</p>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col me-4">
+      <p class="mb-2">Diagnósticos</p>
+      <div class="info-container" *ngIf="this.mascotaDetalle.mascota.vacunas">
+        <p class="mb-2">{{ this.mascotaDetalle.mascota.vacunas }}</p>
+      </div>
+      <div class="info-container" *ngIf="!this.mascotaDetalle.mascota.vacunas">
+        <p class="mb-2">No hay nigún diagnóstico</p>
+      </div>
+    </div>
+    <div class="col me-4">
+      <p class="mb-2">Recordatorios</p>
+      <div
+        class="info-container"
+        *ngFor="let recordatorio of this.mascotaDetalle.recordatorios"
+      >
+        <p class="mb-2">
+          Fecha: {{ recordatorio.fecha_inicio | date : "dd/MM/yyyy" }}
+        </p>
+        <p class="mb-2">Motivo: {{ recordatorio.motivo }}</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <p class="mb-2">Informes</p>
+    <div
+      class="col me-4"
+      *ngFor="let infor of mascotaDetalle.mascota.informes_de_mascota"
+    >
+      <div class="info-container">
+        <p class="mb-2">{{ infor }} <i class="bi bi-download"></i></p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="mb-3 mt-4">
+  <div class="alert alert-danger" role="alert" *ngIf="error">
+    <h4 class="alert-heading">
+      <i class="bi bi-x-circle"></i> No se encontraron datos de la mascota.
+    </h4>
+    <hr />
+    <p>{{ this.message }}</p>
+  </div>
+</div>
 
 <div>
-    <a routerLink="/user/mascotas" class="btn btn-orange-contrast mt-4">Volver</a>
+  <a routerLink="/user/mascotas" class="btn btn-orange-contrast mt-4">Volver</a>
 </div>
-  

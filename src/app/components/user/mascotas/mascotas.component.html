@@ -1,29 +1,66 @@
 <div class="d-flex justify-content-between">
-    <button type="submit" class="btn btn-orange mt-4" (click)='altaMascota()'>Añadir mascota</button>
+  <button type="submit" class="btn btn-orange mt-4" (click)="altaMascota()">
+    Añadir mascota
+  </button>
 </div>
- 
-<div>
-    <div class="tarjetas-container" *ngFor='let mascota of mascotas' fxLayout="row" fxLayoutAlign="space-around center">
-        <div class="col-md-3">
-            <div class="card efectos" (click)="detalleMascota(mascota.num_chip)">    
-                <div class="row">  
-                    <div class="col-md-4 m-2">
-                        <img class="imgTam" src="../../../../assets/images/mascotas/gato_1.png">       
-                    </div>      
-                    <div class="col-md-4 m-2">
-                        <div class="imgTam">
-                            <p>{{ mascota.nombre_mascota}}</p>
-                            <p>{{ mascota.num_chip}}</p>
-                            <p>{{ mascota.especie}}</p>
-                        </div>
-                    </div>
-        
-                    <div class="d-flex justify-content-center mt-5 mb-4">
-                        <button type="submit" class="btn btn-orange mx-2 d-inline-block rounded-circle" (click)="editarMascota(mascota.num_chip); $event.stopPropagation();"><i class="bi bi-pencil"></i> </button>
-                        <button type="submit" class="btn btn-orange mx-2 d-inline-block rounded-circle" (click)="eliminarMascota(mascota.num_chip); $event.stopPropagation();"><i class="bi bi-trash"></i> </button>
-                    </div>                    
-                </div>
-            </div>           
+<div class="container">
+  <div class="d-flex justify-content-between">
+    <div class="tarjetas-container row">
+      <div class="col-md-4 mt-4" *ngFor="let mascota of mascotas">
+        <div class="card efectos" (click)="detalleMascota(mascota)">
+          <div class="row">
+            <div class="col-md-4 m-2">
+              <img
+                class="imgTam"
+                [src]="'../../../../assets/images/mascotas/' + mascota.imagen"
+              />
+            </div>
+            <div class="col-md-4 m-2">
+              <div class="imgTam">
+                <p>{{ mascota.nombre_mascota }}</p>
+                <p>{{ mascota.num_chip }}</p>
+                <p>{{ mascota.especie }}</p>
+              </div>
+            </div>
+
+            <div class="d-flex justify-content-center mt-5 mb-4">
+              <button
+                type="submit"
+                class="btn btn-orange mx-2 d-inline-block rounded-circle"
+                (click)="editarMascota(mascota); $event.stopPropagation()"
+              >
+                <i class="bi bi-pencil"></i>
+              </button>
+              <button
+                type="submit"
+                class="btn btn-orange mx-2 d-inline-block rounded-circle"
+                (click)="
+                  eliminarMascota(mascota.num_chip); $event.stopPropagation()
+                "
+              >
+                <i class="bi bi-trash"></i>
+              </button>
+            </div>
+          </div>
         </div>
-    </div> 
+      </div>
+    </div>
+  </div>
+  <div class="mb-3 mt-4">
+    <div class="alert alert-success" role="alert" *ngIf="message">
+      <h4 class="alert-heading">
+        <i class="bi bi-check-circle"></i> ¡Mascota borrada exitosamente!
+      </h4>
+      <hr />
+      <p>{{ this.message }}</p>
+    </div>
+
+    <div class="alert alert-danger" role="alert" *ngIf="error">
+      <h4 class="alert-heading">
+        <i class="bi bi-x-circle"></i> Error al borrar la mascota
+      </h4>
+      <hr />
+      <p>{{ this.message }}</p>
+    </div>
+  </div>
 </div>
