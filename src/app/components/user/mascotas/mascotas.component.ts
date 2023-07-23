@@ -34,13 +34,13 @@ export class MascotasComponent {
   }
 
   altaMascota(){
-    this.router.navigate(['user/mascotas-alta']);
+    this.router.navigate(['user/mascotas/alta']);
   }
 
   editarMascota(numChip: number){}
   eliminarMascota(numChip: number){}
 
   detalleMascota(numChip: number){
-    this.router.navigate(['user/mascotas-detalle', numChip]);
+    this.router.navigate(['user/mascotas/detalle', numChip]);
   }
 }

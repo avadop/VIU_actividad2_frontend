@@ -24,8 +24,8 @@ const appRoutes: Routes = [
   {path: 'user', component: UserComponent, children: [
     {path: '', component: PerfilUsuarioComponent},
     {path: 'mascotas', component: MascotasComponent},
-    {path: 'mascotas-alta', component: MascotasAltaComponent},
-    {path: 'mascotas-detalle/:numChip', component: MascotasDetalleComponent},
+    {path: 'mascotas/alta', component: MascotasAltaComponent},
+    {path: 'mascotas/detalle/:numChip', component: MascotasDetalleComponent},
     {path: 'citas-programadas', component: CitasProgramadasComponent}
   ]},
   {path: '**', component: ErrorComponent}
