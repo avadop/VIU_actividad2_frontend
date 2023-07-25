@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute, Router } from '@angular/router';
 import { MascotaDetalle } from 'src/app/models/MascotaDetalle';
 import { CitaService } from 'src/app/services/cita.service';
@@ -15,40 +16,27 @@ export class MascotasDetalleComponent implements OnInit {
   public mascotaDetalle: MascotaDetalle;
   public message: string;
   public error: boolean;
+  public hayCitas: boolean;
 
   constructor(
     private mascotasService: MascotaService,
     private citasService: CitaService,
     private recordatorioService: RecordatoroService,
     private router: Router,
-    private activeRouter: ActivatedRoute
+    private activeRouter: ActivatedRoute,
+    private dialog: MatDialog
   ) {
     this.message = '';
     this.error = false;
+    this.hayCitas = false;
     this.mascotaDetalle = new MascotaDetalle();
 
     const state = this.router.getCurrentNavigation()?.extras.state;
     if (state && state['mascota']) {
       this.mascotaDetalle.mascota = state['mascota'];
-      console.log(this.mascotaDetalle.mascota);
-
-      console.log(typeof this.mascotaDetalle.mascota.informes_de_mascota);
-    } /*else {
-      this.numChip = this.activeRouter.snapshot.params['numChip'];
-      this.mascotasService
-        .getMascotaById(this.numChip)
-        .subscribe((response) => {
-          if (response.statusCode === 200) {
-            this.mascota.mascota = response.data;
-            this.informesArray = this.mascota.informes_de_mascota;
-            console.log(this.mascota);
-          } else {
-            this.error = true;
-            this.message = `${response.statusCode} - ${response.data}`;
-          }
-        });
-    }*/
+    }
   }
+
   ngOnInit(): void {
     this.citasMascota();
     this.recordatoriosMascota();
@@ -60,6 +48,7 @@ export class MascotasDetalleComponent implements OnInit {
       .subscribe((response) => {
         if (response.statusCode === 200) {
           this.mascotaDetalle.citas = response.data;
+          this.hayCitas = this.mascotaDetalle.citas.length !== 0;
         } else {
           this.error = true;
           this.message = `${response.statusCode} - ${response.data}`;

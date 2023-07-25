@@ -34,7 +34,7 @@ export class MascotasComponent {
     this.clienteService
       .getMascotasCliente(this.loggedUserService.getUserId())
       .subscribe((response: any) => {
-        console.log('Response get Mascota: ', response);
+        this.mascotas = [];
         for (let dato of response.data) {
           const mascota = new Mascota();
           mascota.dni = dato.dni;
@@ -57,7 +57,7 @@ export class MascotasComponent {
       });
   }
 
-  altaMascota(){
+  altaMascota() {
     this.router.navigate(['user/mascotas/alta']);
   }
 

@@ -1,12 +1,12 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { Cliente } from "../models/Cliente";
+import { Cliente } from '../models/Cliente';
 
-const apiUrl = 'http://localhost/api/clientes'; 
+const apiUrl = 'http://localhost/api/clientes';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class UserRegisterService {
   constructor(private http: HttpClient) {}

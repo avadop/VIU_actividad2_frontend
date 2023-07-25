@@ -27,6 +27,7 @@
               <button
                 type="submit"
                 class="btn btn-orange mx-2 d-inline-block rounded-circle"
+                matTooltip="Editar Mascota"
                 (click)="editarMascota(mascota); $event.stopPropagation()"
               >
                 <i class="bi bi-pencil"></i>
@@ -34,6 +35,7 @@
               <button
                 type="submit"
                 class="btn btn-orange mx-2 d-inline-block rounded-circle"
+                matTooltip="Eliminar Mascota"
                 (click)="
                   eliminarMascota(mascota.num_chip); $event.stopPropagation()
                 "
@@ -46,21 +48,6 @@
       </div>
     </div>
   </div>
-  <div class="mb-3 mt-4">
-    <div class="alert alert-success" role="alert" *ngIf="message">
-      <h4 class="alert-heading">
-        <i class="bi bi-check-circle"></i> ¡Mascota borrada exitosamente!
-      </h4>
-      <hr />
-      <p>{{ this.message }}</p>
-    </div>
 
-    <div class="alert alert-danger" role="alert" *ngIf="error">
-      <h4 class="alert-heading">
-        <i class="bi bi-x-circle"></i> Error al borrar la mascota
-      </h4>
-      <hr />
-      <p>{{ this.message }}</p>
-    </div>
-  </div>
+  <app-message [message]="this.message" [error]="this.error"></app-message>
 </div>

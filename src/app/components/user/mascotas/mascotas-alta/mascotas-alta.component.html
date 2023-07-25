@@ -129,22 +129,7 @@
         >
         <button type="submit" class="btn btn-orange mx-3">Añadir</button>
       </div>
-
-      <div class="alert alert-success" role="alert" *ngIf="message">
-        <h4 class="alert-heading">
-          <i class="bi bi-check-circle"></i> ¡Mascota añadida exitosamente!
-        </h4>
-        <hr />
-        <p>{{ this.message }}</p>
-      </div>
-
-      <div class="alert alert-danger" role="alert" *ngIf="error">
-        <h4 class="alert-heading">
-          <i class="bi bi-x-circle"></i> Error al añadir nueva mascota
-        </h4>
-        <hr />
-        <p>{{ this.message }}</p>
-      </div>
+      <app-message [message]="this.message" [error]="this.error"></app-message>
     </div>
   </form>
 </div>
