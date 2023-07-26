@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { MatPaginator, PageEvent } from '@angular/material/paginator';
+import { Paginador } from 'src/app/models/Paginador';
 import { Producto } from 'src/app/models/Producto';
 import { ProductoService } from 'src/app/services/producto.service';
 
@@ -6,28 +8,48 @@ import { ProductoService } from 'src/app/services/producto.service';
   selector: 'app-tienda',
   templateUrl: './tienda.component.html',
   styleUrls: ['./tienda.component.css'],
-  providers: [ProductoService]
+  providers: [ProductoService],
 })
 export class TiendaComponent implements OnInit {
   productos: Producto[] = [];
+  totalItems: number;
+  pageSizeOptions: number[];
 
-  constructor(private productoService: ProductoService) {}
+  paginador: Paginador;
+
+  @ViewChild('paginator') paginator: MatPaginator | undefined;
+
+  constructor(private productoService: ProductoService) {
+    this.totalItems = 0;
+    this.paginador = new Paginador(1, 0, 9, 0);
+    this.pageSizeOptions = [6, 12, 24];
+  }
 
   ngOnInit(): void {
     this.getProductos();
   }
 
   getProductos(): void {
-    this.productoService.getProductos().subscribe(
-      (infoProducto: any) => {
-        this.productos = infoProducto.data;
-        console.log('Productos obtenidos:', this.productos);
-      },
-      (error) => {
-        console.error('Error al obtener los productos:', error);
-      }
-    );
+    this.productoService
+      .getProductos(this.paginador)
+      .subscribe((infoProducto: any) => {
+        this.productos = infoProducto.data.data;
+        this.paginador.pageSize = this.productos.length;
+        this.paginador.totalItems = infoProducto.data.total;
+      });
+
+    if (this.paginator) {
+      this.paginator.firstPage();
+    }
+  }
+
+  onPageChange(event: PageEvent) {
+    this.paginador.pageIndex = event.pageIndex;
+    this.paginador.pageNumber = event.pageIndex + 1;
+    this.paginador.pageSize = event.pageSize;
+
+    this.productoService.getProductos(this.paginador).subscribe((data: any) => {
+      this.productos = data.data.data;
+    });
   }
 }
-
-

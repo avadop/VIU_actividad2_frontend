@@ -1,17 +1,16 @@
 /* tienda.component.css */
 /* Personaliza el tamaño de las imágenes aquí */
 .card-img-top {
-    width: 200px; /* Cambia el valor según tus necesidades */
-    height: auto; /* Para mantener la proporción original de la imagen */
-  }
-  
-  /* Estilo opcional para el contenedor de la tarjeta */
-  .card {
-    border: 1px solid #ccc;
-    padding: 10px;
-  }
-  /* tienda.component.css */
+  width: 200px; /* Cambia el valor según tus necesidades */
+  height: auto; /* Para mantener la proporción original de la imagen */
+}
+
+/* Estilo opcional para el contenedor de la tarjeta */
+.card {
+  border: 1px solid #ccc;
+  padding: 10px;
+}
+/* tienda.component.css */
 .productos-lista ul {
-    list-style-type: none; /* Elimina los puntos de la lista */
-  }
-  
+  list-style-type: none; /* Elimina los puntos de la lista */
+}

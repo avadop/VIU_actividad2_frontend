@@ -25,6 +25,8 @@ import { MascotasDetalleComponent } from './components/user/mascotas/mascotas-de
 import { TiendaComponent } from './components/tienda/tienda.component';
 import { MessageComponent } from './components/message/message.component';
 import { MatTooltipModule } from '@angular/material/tooltip';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -55,6 +57,8 @@ import { MatTooltipModule } from '@angular/material/tooltip';
     HttpClientModule,
     FormsModule,
     MatTooltipModule,
+    MatPaginatorModule,
+    BrowserAnimationsModule,
   ],
   providers: [LoggedUserService],
   bootstrap: [AppComponent],
