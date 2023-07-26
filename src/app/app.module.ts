@@ -27,6 +27,7 @@ import { MessageComponent } from './components/message/message.component';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { PaginatorComponent } from './components/paginator/paginator.component';
 
 @NgModule({
   declarations: [
@@ -48,6 +49,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     MascotasDetalleComponent,
     TiendaComponent,
     MessageComponent,
+    PaginatorComponent,
   ],
   imports: [
     BrowserModule,

@@ -14,7 +14,7 @@ export class ProductoService {
 
   public getProductos(paginador?: Paginador): Observable<Producto[]> {
     return this.http.get<Producto[]>(
-      `${apiUrl}?page=${paginador?.pageIndex}&per_page=${paginador?.pageSize}`
+      `${apiUrl}?page=${paginador?.pageNumber}&per_page=${paginador?.pageSize}`
     );
   }
 }

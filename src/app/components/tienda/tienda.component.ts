@@ -1,5 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
-import { MatPaginator, PageEvent } from '@angular/material/paginator';
+import { Component, OnInit } from '@angular/core';
 import { Paginador } from 'src/app/models/Paginador';
 import { Producto } from 'src/app/models/Producto';
 import { ProductoService } from 'src/app/services/producto.service';
@@ -12,17 +11,16 @@ import { ProductoService } from 'src/app/services/producto.service';
 })
 export class TiendaComponent implements OnInit {
   productos: Producto[] = [];
-  totalItems: number;
   pageSizeOptions: number[];
 
   paginador: Paginador;
 
-  @ViewChild('paginator') paginator: MatPaginator | undefined;
+  totalProducts: number;
 
   constructor(private productoService: ProductoService) {
-    this.totalItems = 0;
-    this.paginador = new Paginador(1, 0, 9, 0);
+    this.paginador = new Paginador(1, 0, 6, 0);
     this.pageSizeOptions = [6, 12, 24];
+    this.totalProducts = 0;
   }
 
   ngOnInit(): void {
@@ -36,20 +34,20 @@ export class TiendaComponent implements OnInit {
         this.productos = infoProducto.data.data;
         this.paginador.pageSize = this.productos.length;
         this.paginador.totalItems = infoProducto.data.total;
+        this.totalProducts = infoProducto.data.total;
+        console.log(
+          'getProductos->subscribe->this.totalProducts : ',
+          this.totalProducts
+        );
       });
-
-    if (this.paginator) {
-      this.paginator.firstPage();
-    }
   }
 
-  onPageChange(event: PageEvent) {
-    this.paginador.pageIndex = event.pageIndex;
-    this.paginador.pageNumber = event.pageIndex + 1;
-    this.paginador.pageSize = event.pageSize;
+  onPageChange(pageNumber: number) {
+    this.paginador.pageNumber = pageNumber;
 
     this.productoService.getProductos(this.paginador).subscribe((data: any) => {
       this.productos = data.data.data;
+      this.totalProducts = this.productos.length;
     });
   }
 }

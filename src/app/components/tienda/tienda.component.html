@@ -40,13 +40,11 @@
   </div>
 
   <div class="row">
-    <mat-paginator
-      [length]="paginador.totalItems"
-      [pageSize]="paginador.pageSize"
-      [pageIndex]="paginador.pageIndex"
+    <app-paginator
+      *ngIf="totalProducts > 0"
+      [numProductos]="totalProducts"
       [pageSizeOptions]="pageSizeOptions"
-      (page)="onPageChange($event)"
-      class="pagination"
-    ></mat-paginator>
+      (pageChange)="onPageChange($event)"
+    ></app-paginator>
   </div>
 </div>
