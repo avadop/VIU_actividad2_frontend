@@ -66,8 +66,14 @@ export class CitasProgramadasComponent {
     let weekStart = new Date();
     let week = new Array<Date>();
 
-    if(currentDate.getDay() > 1) {
+    if(currentDate.getDay() === 6) {
+      weekStart.setDate(currentDate.getDate() + 2)
+    }
+    else if(currentDate.getDay() > 1) {
       weekStart.setDate(currentDate.getDate() - currentDate.getDay() + 1);
+    }
+    else if(currentDate.getDay() === 0) {
+      weekStart.setDate(currentDate.getDate() + 1)
     }
     else {
       weekStart.setDate(currentDate.getDate());

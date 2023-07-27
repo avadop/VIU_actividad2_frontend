@@ -1,10 +1,11 @@
 import { Component } from '@angular/core';
-import { UserRegisterService } from 'src/app/services/userRegister.service';
+import { ClienteService } from 'src/app/services/cliente.service copy';
 
 @Component({
   selector: 'app-registro-usuario',
   templateUrl: './registro-usuario.component.html',
-  styleUrls: ['./registro-usuario.component.css']
+  styleUrls: ['./registro-usuario.component.css'],
+  providers: [ClienteService]
 })
 export class RegistroUsuarioComponent {
   public userData: any = {
@@ -17,7 +18,7 @@ export class RegistroUsuarioComponent {
     contrasenya: '',
   };
 
-  constructor(private userRegisterService: UserRegisterService) {}
+  constructor(private clientService: ClienteService) {}
 
   onSubmit(form: any): void {
     if (form.valid) {
@@ -28,7 +29,7 @@ export class RegistroUsuarioComponent {
       }
 
       // Enviar los datos al servicio para registrar al usuario
-      this.userRegisterService.registrarUsuario(this.userData).subscribe(
+      this.clientService.registrarUsuario(this.userData).subscribe(
         (response) => {
           // El usuario fue registrado correctamente
           console.log('Usuario registrado:', response);

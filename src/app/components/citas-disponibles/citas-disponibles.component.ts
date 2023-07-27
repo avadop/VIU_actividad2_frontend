@@ -48,8 +48,15 @@ export class CitasDisponiblesComponent {
     let weekStart = new Date();
     let week = new Array<{enabled: boolean, date: Date}>();
 
-    if(currentDate.getDay() > 1) {
+    
+    if(currentDate.getDay() === 6) {
+      weekStart.setDate(currentDate.getDate() + 2)
+    }
+    else if(currentDate.getDay() > 1) {
       weekStart.setDate(currentDate.getDate() - currentDate.getDay() + 1);
+    }
+    else if(currentDate.getDay() === 0) {
+      weekStart.setDate(currentDate.getDate() + 1)
     }
     else {
       weekStart.setDate(currentDate.getDate());
@@ -58,10 +65,14 @@ export class CitasDisponiblesComponent {
     for(let i = 0; i < 5; i++) {
       let day = new Date();
       day.setDate(weekStart.getDate() + i);
-      week.push({date: day, enabled: day.getDate() > currentDate.getDate()});
+      week.push({date: day, enabled: this.isDayLater(day, currentDate) });
     }
 
     return week;
+  }
+
+  isDayLater(day: Date, currentDate: Date) : boolean {
+    return day.getMonth() > currentDate.getMonth() ? true : day.getDate() > currentDate.getDate();
   }
 
   changeWeek(type: 'previous' | 'next'):void {

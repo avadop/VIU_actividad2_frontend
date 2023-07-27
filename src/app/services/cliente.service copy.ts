@@ -21,4 +21,9 @@ export class ClienteService {
     return this.http.get(`${apiUrl}${id}/mascotas`)
   }
 
+  public registrarUsuario(usuario: any): Observable<any> {
+    const url = `${apiUrl}new`;
+    return this.http.post<any>(url, usuario);
+  }
+
 }
