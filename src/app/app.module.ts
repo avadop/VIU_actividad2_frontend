@@ -4,7 +4,7 @@ import { routing } from './app.routing';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { MatCardModule } from '@angular/material/card';
-
+import { MatDialogModule } from '@angular/material/dialog';
 import { AppComponent } from './app.component';
 import { MainPageComponent } from './components/main-page/main-page.component';
 import { RegistroUsuarioComponent } from './components/registro-usuario/registro-usuario.component';
@@ -23,6 +23,11 @@ import { PerfilUsuarioComponent } from './components/user/perfil-usuario/perfil-
 import { MascotasAltaComponent } from './components/user/mascotas/mascotas-alta/mascotas-alta.component';
 import { MascotasDetalleComponent } from './components/user/mascotas/mascotas-detalle/mascotas-detalle.component';
 import { TiendaComponent } from './components/tienda/tienda.component';
+import { MessageComponent } from './components/message/message.component';
+import { MatTooltipModule } from '@angular/material/tooltip';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { PaginatorComponent } from './components/paginator/paginator.component';
 
 @NgModule({
   declarations: [
@@ -43,15 +48,21 @@ import { TiendaComponent } from './components/tienda/tienda.component';
     MascotasAltaComponent,
     MascotasDetalleComponent,
     TiendaComponent,
+    MessageComponent,
+    PaginatorComponent,
   ],
   imports: [
     BrowserModule,
     MatCardModule,
+    MatDialogModule,
     routing,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    MatTooltipModule,
+    MatPaginatorModule,
+    BrowserAnimationsModule,
   ],
   providers: [LoggedUserService],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

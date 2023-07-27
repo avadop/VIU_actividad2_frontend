@@ -4,31 +4,47 @@
     <div class="col-md-4 mb-4" *ngFor="let producto of productos">
       <!-- Eliminamos la clase "card" del div para quitar los bordes -->
       <div>
-        <img class="card-img-top" [src]="'assets/images/' + producto.imagen" alt="Producto">
+        <img
+          class="card-img-top"
+          [src]="'assets/images/' + producto.imagen"
+          alt="Producto"
+        />
         <div class="card-body">
           <h5 class="card-title">{{ producto.nombre_producto }}</h5>
           <p class="card-text"><strong>Marca:</strong> {{ producto.marca }}</p>
-          <p class="card-text"><strong>Descripción:</strong> {{ producto.descripcion }}</p>
-          <p class="card-text"><strong>Ficha Técnica:</strong> {{ producto.ficha_tecnica }}</p>
-          <p class="card-text"><strong>Precio:</strong> {{ producto.precio | currency:'EUR' }}</p>
-          <p class="card-text"><strong>Cantidad Disponible:</strong> {{ producto.cantidad_disponible }}</p>
-          <p class="card-text"><strong>Tipo de Producto:</strong> {{ producto.tipo_producto }}</p>
+          <p class="card-text">
+            <strong>Descripción:</strong> {{ producto.descripcion }}
+          </p>
+          <p class="card-text">
+            <strong>Ficha Técnica:</strong> {{ producto.ficha_tecnica }}
+          </p>
+          <p class="card-text">
+            <strong>Precio:</strong> {{ producto.precio | currency : "EUR" }}
+          </p>
+          <p class="card-text">
+            <strong>Cantidad Disponible:</strong>
+            {{ producto.cantidad_disponible }}
+          </p>
+          <p class="card-text">
+            <strong>Tipo de Producto:</strong> {{ producto.tipo_producto }}
+          </p>
         </div>
-          <!-- Botón de añadir -->
-          <button class="btn btn-orange ms-3">Añadir al Carrito</button>
+        <!-- Botón de añadir -->
+        <button class="btn btn-orange ms-3">Añadir al Carrito</button>
       </div>
     </div>
   </div>
+
   <div class="text-center" *ngIf="productos.length === 0">
     <p>No hay productos disponibles en la tienda.</p>
   </div>
+
+  <div class="row">
+    <app-paginator
+      *ngIf="totalProducts > 0"
+      [numProductos]="totalProducts"
+      [pageSizeOptions]="pageSizeOptions"
+      (pageChange)="onPageChange($event)"
+    ></app-paginator>
+  </div>
 </div>
-
-
-
-
-  
-  
-      
-  
-  

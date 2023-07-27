@@ -1,19 +1,19 @@
-import { Injectable } from "@angular/core";
+import { Injectable } from '@angular/core';
 
 const USER_ID_KEY = 'userId';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class LoggedUserService {
-  constructor() { }
+  constructor() {}
 
   public setUserId(value: string) {
     localStorage.setItem(USER_ID_KEY, value);
   }
 
   public getUserId() {
-    return localStorage.getItem(USER_ID_KEY)
+    return localStorage.getItem(USER_ID_KEY);
   }
 
   public removeUserId() {

@@ -48,11 +48,12 @@
         <p class="mb-2">Fecha: {{ cita.fecha | date : "dd/MM/yyyy" }}</p>
         <p class="mb-2">Tipo: {{ cita.tipo_cita }}</p>
       </div>
-      <div class="info-container" *ngIf="mascotaDetalle.citas.length === 0">
+      <div class="info-container" *ngIf="!hayCitas">
         <p class="mb-2">No hay citas disponibles</p>
       </div>
     </div>
   </div>
+
   <div class="row">
     <div class="col me-4">
       <p class="mb-2">Diagnósticos</p>
@@ -88,17 +89,17 @@
       </div>
     </div>
   </div>
-</div>
 
-<div class="mb-3 mt-4">
-  <div class="alert alert-danger" role="alert" *ngIf="error">
-    <h4 class="alert-heading">
-      <i class="bi bi-x-circle"></i> No se encontraron datos de la mascota.
-    </h4>
-    <hr />
-    <p>{{ this.message }}</p>
+  <div class="row">
+    <p class="mb-2 mt-2">Vídeo mascota</p>
+
+    <video width="320" height="240" controls>
+      <source src="../../../../../assets/videos/gato.mp4" type="video/mp4" />
+    </video>
   </div>
 </div>
+
+<app-message [message]="this.message" [error]="this.error"></app-message>
 
 <div>
   <a routerLink="/user/mascotas" class="btn btn-orange-contrast mt-4">Volver</a>

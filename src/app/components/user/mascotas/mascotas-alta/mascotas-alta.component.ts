@@ -70,10 +70,12 @@ export class MascotasAltaComponent {
     this.mascotaService.createMascota(mascota).subscribe((response) => {
       if (response.statusCode === 200) {
         this.message = 'La mascota se ha dado de alta correctamente';
+        this.error = false;
         this.clearForm();
         this.informes = [];
       } else {
         this.error = true;
+        this.message = '';
         this.message = `${response.statusCode} - ${response.data}`;
       }
     });
