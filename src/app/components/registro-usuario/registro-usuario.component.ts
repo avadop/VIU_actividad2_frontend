@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 import { ClienteService } from 'src/app/services/cliente.service copy';
 
 @Component({
@@ -18,7 +19,7 @@ export class RegistroUsuarioComponent {
     contrasenya: '',
   };
 
-  constructor(private clientService: ClienteService) {}
+  constructor(private clientService: ClienteService, private router: Router) {}
 
   onSubmit(form: any): void {
     if (form.valid) {
@@ -32,7 +33,9 @@ export class RegistroUsuarioComponent {
       this.clientService.registrarUsuario(this.userData).subscribe(
         (response) => {
           // El usuario fue registrado correctamente
-          console.log('Usuario registrado:', response);
+          if(response.statusCode === 200) {
+            this.router.navigate(['main-page']);
+          }
         }
       );
     }
