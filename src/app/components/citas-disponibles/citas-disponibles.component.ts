@@ -49,8 +49,8 @@ export class CitasDisponiblesComponent {
     let week = new Array<{enabled: boolean, date: Date}>();
 
     
-    if(currentDate.getDay() === 6) {
-      weekStart.setDate(currentDate.getDate() + 2)
+    if(currentDate.getDay() === 6 || currentDate.getDay() === 5) {
+      weekStart.setDate(currentDate.getDate() + 8 - currentDate.getDay());
     }
     else if(currentDate.getDay() > 1) {
       weekStart.setDate(currentDate.getDate() - currentDate.getDay() + 1);
